@@ -22,7 +22,7 @@
         <van-cell-group inset>
 
           <van-field
-           style="height: 60px"
+           style="height: 60px;"
             v-model = "username"
             :left-icon = "require('@/assets/yys/用户名图标.png')"
             placeholder = "用户名"
@@ -30,7 +30,7 @@
           />
 
           <van-field
-           
+           style="height: 60px;"
             v-model="password"
             type="password"
             :left-icon = "require('@/assets/yys/密码图标.png')"
@@ -102,6 +102,9 @@ export default {
     ::v-deep .van-field__left-icon {
      margin: auto;
      margin-right: 20px;
+    }
+    ::v-deep .van-cell__value {
+      margin: auto;
     }
   }
 
