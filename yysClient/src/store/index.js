@@ -2,10 +2,12 @@ import { createStore } from 'vuex';
 
 const store = createStore({
     state: {
-        token: '',
-        userInfo: {},
-        patInfo: {}, //当前选中的患者
-        patList: [] //患者列表
+     
+            token: '',
+            userInfo: {},
+            patInfo: {}, //当前选中的患者
+            patList: [] //患者列表
+       
     },
     mutations: {
         setToken(state, payload) {
@@ -24,7 +26,6 @@ const store = createStore({
 
         },
         setPatList(state, payload) {
-
             state.patList.push(...payload);
             console.error(state.patList.length)
 
