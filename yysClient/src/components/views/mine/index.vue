@@ -1,0 +1,22 @@
+<template>
+  <div class="mine">我的</div>
+</template>
+
+<script>
+export default {
+  name: "Mine",
+  data() {
+    return {};
+  },
+  methods: {},
+
+  created() {},
+  props: {
+    msg: String,
+  },
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss">
+</style>

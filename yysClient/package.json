@@ -13,6 +13,7 @@
     "node-sass": "^7.0.1",
     "vant": "^3.4.3",
     "vue": "^3.2.13",
+    "vue-router": "^4.0.14",
     "vuex": "^4.0.2"
   },
   "devDependencies": {

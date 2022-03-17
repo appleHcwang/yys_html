@@ -1,5 +1,8 @@
 <template>
-  <Login msg="Welcome to Your Vue.js App"/>
+<div id="app">
+  <router-view />
+</div>
+  <!-- <Login msg="Welcome to Your Vue.js App"/> -->
 </template>
 
 <script>
