@@ -10,7 +10,7 @@ import Patient from '../views/patient/index.vue'
 
 //登陆
 export const loginRouter = {
-    path: '/login',
+    path: '/',
     name: 'login',
     meta: {
         title: '登录'
@@ -23,9 +23,9 @@ export const loginRouter = {
 
 // 作为Main组件写在mainRouter里
 export const mainRouter = {
-    path: '/',
+    path: '/mainTabbar',
     name: 'mainTabbar',
-    // redirect: '/user-center',
+     redirect: '/home',
     meta: {
         notCache: true,
         title: '首页'
@@ -33,7 +33,7 @@ export const mainRouter = {
     component: Layout,
     children: [
         {
-            path: '',
+            path: '/home',
             name: 'home',
             component: Home,
             meta: { title: '首页', }

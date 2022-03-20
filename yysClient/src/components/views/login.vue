@@ -61,35 +61,55 @@ export default {
     onSubmit(values) {
       console.log("submit", values);
       let postData = {
-        appVersion: "1413",
-        imei: "530000000318641",
-        mac: "08:00:27:FF:3D:16",
+        appVersion: "1499",
+        descDevice: "SM-G9810",
+        imei: "",
+        mac: "00c58b70fc12764aaa36f102e71fff974a9f66915a96c1bfbf663b8d74ff7cef",
+        method: "S001",
         networkType: "WIFI",
+        orgId: "1002",
+        orgName: "新疆自治区人民医院",
         osInfo: "ANDROID",
-        params:
-          '{"address":"无定位信息","phoneNum":"18856074994","imei":"530000000318641","userPwd":"123456","mac":"08:00:27:FF:3D:16"}',
-        phoneNum: "18856074994",
+        params: {
+          zlwLogin: true,
+          deviceType: "ANDROID",
+          password: "81dc9bdb52d04dc20036dbd8313ed055",
+          phone: "13856018636",
+          deviceId: "05eee9a89432ae060ed3305250f8bc44",
+          username: "13856018636",
+        },
+        phoneNum: "13856018636",
         skey: "dfgS^%_DGks$$@#46q9_8avgzhEs35q2f3",
-        stringVersion: "演示版本",
-        token: "ad1e2f82cd6a1cd45f3d73bb569ac414",
-        wgLat: "39.90719154403526",
-        wgLon: "116.39108247569935",
+        stringVersion: "合肥大区",
+        token: "09443a80c30f4df09e0d17e77116edab",
+        wgLat: "31.834578",
+        wgLon: "117.144944",
       };
       this.$http({
         method: "post",
-        url: "api/YYS-SSOServer/service/login2",
-        data:postData,
+        url: "YYS-SSOServer/gateway/uap-service-ext-service/v1/pb/login/phone",
+        data: postData,
       })
         .then((response) => {
-          //这里使用了ES6的语法
-          console.log(response); //请求成功返回的数据
+          let { r } = response.data;
+          if (r.token) {
+            this.$router.push({ path: "/mainTabbar" });
+          }
+          console.log(r);
+          let hosConfigArr = []; //放医院列表
+          let userInfo = null; //放用户信息
+          let token = ""; //放token
+          let ssoToken = ""; //单家医院
+          let uapToken = ""; //区域版
         })
         .catch(
           (error) => console.log(error) //请求失败返回的数据
         );
     },
   },
-  created() {},
+  created() {
+    this.$router.push({ path: "/mainTabbar" });
+  },
   props: {
     msg: String,
   },

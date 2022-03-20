@@ -1,0 +1,17 @@
+// !! iflymed-ui 皮肤变量
+// 主色 #61b3c5 #3257a4  #617FBD
+// $--color-primary:#28b09d;
+// 顶部导航高度
+$navbar: 48px;
+$elBreadcrumb: 16px;
+//sidebar
+$menuText:#bfcbd9;
+$menuActiveText:#409eff;
+$subMenuActiveText:#f4f4f5; //https://github.com/ElemeFE/element/issues/12951
+$menuBg:#304156;
+$menuHover:#263445;
+$subMenuBg:#1f2d3d;
+$subMenuHover:#001528;
+$themeColor:#28b09d;
+$sideBarWidth: 192px;
+$commerheight: $navbar + $elBreadcrumb;

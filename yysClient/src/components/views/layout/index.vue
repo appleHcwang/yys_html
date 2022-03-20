@@ -2,7 +2,7 @@
   <div class="Layout">
     <router-view />
     <van-tabbar v-model="active" @change="onChange" route>
-      <van-tabbar-item replace to="/" icon="home-o">首页</van-tabbar-item>
+      <van-tabbar-item replace to="/home" icon="home-o">首页</van-tabbar-item>
       <van-tabbar-item replace to="/patient" icon="search"
         >患者</van-tabbar-item
       >

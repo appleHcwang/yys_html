@@ -1,5 +1,9 @@
-import { Button, List, Cell, CellGroup,Form,Field, Tabbar, TabbarItem} from 'vant';
-
+import {
+    Button, List, Cell, CellGroup,
+    Form, Field, Tabbar, TabbarItem,
+    Swipe, SwipeItem, Search, Grid, GridItem, NavBar, Icon
+} from 'vant';
+import { Lazyload } from 'vant';
 export function vant(app) {
     app.use(Button);
     app.use(List)
@@ -9,5 +13,13 @@ export function vant(app) {
     app.use(Field);
     app.use(Tabbar);
     app.use(TabbarItem);
+    app.use(Swipe);
+    app.use(SwipeItem);
+    app.use(Lazyload);
+    app.use(Search);
+    app.use(Grid);
+    app.use(GridItem);
+    app.use(NavBar);
+    app.use(Icon);
 }
 

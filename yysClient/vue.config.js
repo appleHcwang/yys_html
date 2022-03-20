@@ -17,7 +17,13 @@ module.exports = defineConfig({
         pathRewrite:{
           '^/api':'/'
         }
-      }
+      },
+      '/YYS-SSOServer':{
+        target:'https://yys-dev.iflyhealth.com',
+        pathRewrite:{
+          '^/YYS-SSOServer':'/'
+        }
+      },
     }
     // https:true
   },
