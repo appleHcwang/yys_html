@@ -1,11 +1,14 @@
 <template>
   <div class="app-tabs">
     <div class="tab-cnt">
-      <span :class="['tab-item',{active: item.name === active}]"  v-for="item in options" :key="item.name"
-      @click="onClick(item.name,item.label)"
-      > 
-          {{item.name}}
-          </span>
+      <span
+        :class="['tab-item', { active: item.name === active }]"
+        v-for="item in options"
+        :key="item.name"
+        @click="onClick(item.name, item.index)"
+      >
+        {{ item.name }}
+      </span>
     </div>
   </div>
 </template>
@@ -34,18 +37,25 @@ export default {
     },
   },
   methods: {
-    onClick(name,label) {
+    onClick(name, index) {
       this.active = name;
-      this.$emit("onChange", name,label);
+      this.$emit("onChange", name, index);
     },
+
+      parentHandleclick(name) {
+          this.active = name;
+      }
   },
 };
 </script>
 <style lang="scss">
 .app-tabs {
-
-    text-align: center;
-    margin: 10px 0;
+  // position: fixed;
+  text-align: center;
+  margin: 10px 0;
+  // left: 0;
+  // right: 0;
+  // z-index: 1000;
   .tab-cnt {
     display: inline-flex;
     background-color: #f2f2f2;
@@ -58,10 +68,10 @@ export default {
       border-radius: 17px;
       font-size: 12px;
       line-height: 12px;
-      background-color: #F8F8F8;
+      background-color: #f8f8f8;
       &.active {
-          background-color: #339999;
-          color: white;
+        background-color: #339999;
+        color: white;
       }
     }
   }
