@@ -1,6 +1,8 @@
 <template>
   <div class="patient">
-  <app-tabs :options="options">
+  <app-tabs :options="options"
+   @onChange="onChange"
+  >
       </app-tabs>
 
   </div>
@@ -32,7 +34,12 @@ export default {
       ],
     };
   },
-  methods: {},
+  methods: {
+     onChange (name,label) {
+     
+     },
+
+  },
   created() {},
   props: {
     msg: String,

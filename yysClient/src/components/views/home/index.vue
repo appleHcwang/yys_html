@@ -33,14 +33,14 @@
         style="background-color: white; height: 202px"
         class="my-swipe"
       >
-        <van-swipe-item v-for="n in (menuList.length % 8) + 1" :key="n">
+        <van-swipe-item v-for="n in menu" :key="n">
           <van-grid :border="false" :column-num="4">
             <van-grid-item
               @click="handleItemClick(e, value)"
-              v-for="value in 8"
+              v-for="value in n"
               :key="value"
-              :icon="require('@/assets/yys/会诊管理.png')"
-              text="会诊管理"
+              :icon="value.icon"
+              :text="value.title"
             />
           </van-grid>
         </van-swipe-item>
@@ -58,42 +58,43 @@ export default {
         "https://img01.yzcdn.cn/vant/apple-1.jpg",
         "https://img01.yzcdn.cn/vant/apple-2.jpg",
       ],
+      menu:[],
       menuList: [
         {
           title: "会诊管理",
-          icon: "会诊管理@2x",
+          icon: require('@/assets/yys/会诊管理.png'),
         },
         {
           title: "会诊管理",
-          icon: "会诊管理@2x",
+          icon: require('@/assets/yys/会诊管理.png'),
         },
         {
           title: "会诊管理",
-          icon: "会诊管理@2x",
+          icon: require('@/assets/yys/会诊管理.png'),
         },
         {
           title: "会诊管理",
-          icon: "会诊管理@2x",
+          icon: require('@/assets/yys/会诊管理.png'),
         },
         {
           title: "会诊管理",
-          icon: "会诊管理@2x",
+          icon: require('@/assets/yys/会诊管理.png'),
         },
         {
           title: "会诊管理",
-          icon: "会诊管理@2x",
+          icon: require('@/assets/yys/会诊管理.png'),
         },
         {
           title: "会诊管理",
-          icon: "会诊管理@2x",
+          icon: require('@/assets/yys/会诊管理.png'),
         },
         {
           title: "会诊管理",
-          icon: "会诊管理@2x",
+          icon: require('@/assets/yys/会诊管理.png'),
         },
         {
-          title: "会诊管理",
-          icon: "会诊管理@2x",
+          title: "测试管理",
+          icon: require('@/assets/yys/会诊管理.png'),
         },
       ],
     };
@@ -108,11 +109,19 @@ export default {
     handleItemClick(e, val) {
       alert(val);
     },
+    group(array, subNum) {
+      let index = 0;
+      let newArray = [];
+      while(index < array.length) {
+          newArray.push(array.slice(index, index += subNum));
+      }
+      return newArray;
+  }
+
   },
 
   created() {
-    //  this.menuList.array.forEach(element => {
-    //  });
+    this.menu =   this.group(this.menuList,8)
   },
   props: {
     msg: String,

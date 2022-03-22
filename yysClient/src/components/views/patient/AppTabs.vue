@@ -2,7 +2,7 @@
   <div class="app-tabs">
     <div class="tab-cnt">
       <span :class="['tab-item',{active: item.name === active}]"  v-for="item in options" :key="item.name"
-      @click="onClick(item.name)"
+      @click="onClick(item.name,item.label)"
       > 
           {{item.name}}
           </span>
@@ -34,9 +34,9 @@ export default {
     },
   },
   methods: {
-    onClick(name) {
+    onClick(name,label) {
       this.active = name;
-      this.$emit("on-change", name);
+      this.$emit("onChange", name,label);
     },
   },
 };
