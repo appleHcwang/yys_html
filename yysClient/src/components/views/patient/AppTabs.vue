@@ -7,7 +7,7 @@
         :key="item.name"
         @click="onClick(item.name, item.index)"
       >
-        {{ item.name }}
+        {{ item.label }}
       </span>
     </div>
   </div>
