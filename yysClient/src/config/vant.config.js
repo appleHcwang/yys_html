@@ -1,9 +1,11 @@
 import {
     Button, List, Cell, CellGroup,
     Form, Field, Tabbar, TabbarItem,
-    Swipe, SwipeItem, Search, Grid, GridItem, NavBar, Icon, Tab, Tabs
+    Swipe, SwipeItem, Search, Grid, GridItem, NavBar, Icon, Tab, Tabs,
 } from 'vant';
 import { Lazyload } from 'vant';
+import { Dialog } from 'vant';
+
 export function vant(app) {
     app.use(Button);
     app.use(List)
@@ -23,5 +25,6 @@ export function vant(app) {
     app.use(Icon);
     app.use(Tab);
     app.use(Tabs);
+    app.use(Dialog);
 }
 

@@ -39,8 +39,8 @@
               @click="handleItemClick(e, value)"
               v-for="value in n"
               :key="value"
-              :icon="value.icon"
-              :text="value.title"
+              :icon="value.extJson.iconUrl"
+              :text="value.name"
             />
           </van-grid>
         </van-swipe-item>
@@ -107,7 +107,9 @@ export default {
       alert("sfs");
     },
     handleItemClick(e, val) {
-      alert(val);
+      // alert(JSON.stringify(val));
+       
+      plus.runtime.openWeb(val.url);
     },
     group(array, subNum) {
       let index = 0;
@@ -121,7 +123,11 @@ export default {
   },
 
   created() {
-    this.menu =   this.group(this.menuList,8)
+    // this.menu =   this.group(this.menuList,8)
+    let hos = JSON.parse(localStorage.getItem('currentHos'))
+     
+     this.menu =   this.group(hos.moduleConfig.indexList,8)
+
   },
   props: {
     msg: String,

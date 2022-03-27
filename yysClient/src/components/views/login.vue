@@ -92,23 +92,154 @@ export default {
       })
         .then((response) => {
           let { r } = response.data;
-          if (r.token) {
-            this.$router.push({ path: "/mainTabbar" });
-          }
-          console.log(r);
+          let responseData = r;
+          // if (r.token) {
+          //   this.$router.push({ path: "/mainTabbar" });
+          // }
+          // console.log(r);
           let hosConfigArr = []; //放医院列表
           let userInfo = null; //放用户信息
           let token = ""; //放token
           let ssoToken = ""; //单家医院
           let uapToken = ""; //区域版
+               if(responseData.token){//uap登录数据
+          let { hosConfig=[] } =  responseData;
+          hosConfigArr = hosConfig.map(e => ({
+            hosName: e.name,
+            hosCode: e.code,
+            historyUrl: e.extJson.historyUrl,
+            serverUrl: e.extJson.serverUrl,
+            referralUrl:e.extJson.referralUrl,
+            moduleConfig: e.moduleConfig,
+            userId: responseData.userInfo.extJson.hosUserInfo.find(item => item.hosId === e.id).workerNumber,
+          }));
+          userInfo = {
+            userName: responseData.userInfo.name,
+            userPhone: responseData.userInfo.loginName,
+          };
+          uapToken = responseData.token.accessToken;
+          token = uapToken;
+        }
+        //sso 登录
+
+                 if(responseData.ssoData){
+        //赋值用户信息
+          if(!userInfo){
+            userInfo = {
+              userName: responseData.ssoData.userInfo.userName,
+              userPhone: responseData.ssoData.userInfo.userPhone,
+            }
+          }
+          if(!token){
+            token = responseData.ssoData.token;
+          }
+          ssoToken = responseData.ssoData.token;
+          //医院信息
+          let ssoHosConfig = responseData.ssoData.hosConfig.map(e => {
+            let moduleConfig = {
+              indexList: [],
+              patientList: [],
+            }
+            e.moduleConfig.toolsBar.forEach(item => {
+              let one = {
+                name: item.moduleName,
+                extJson:{
+                  moduleCode: item.moduleCode,
+                }
+              }
+              moduleConfig.indexList.push(one);
+            });
+            e.moduleConfig.navigateBar.forEach(item => {
+              let one = {
+                name: item.moduleName,
+                extJson:{
+                  moduleCode: item.moduleCode,
+                }
+              }
+              moduleConfig.patientList.push(one);
+            })
+            return {
+              hosName: e.hos_name,
+              hosCode: e.hos_code,
+              historyUrl: e.historyUrl,
+              serverUrl: e.business_IP + '/' + e.bs_pro_name,
+              moduleConfig: moduleConfig,
+              userId: e.userInfo.userId,
+              isSsoHos: true,
+            }
+          })
+          hosConfigArr = hosConfigArr.concat(ssoHosConfig);
+        }
+
+         this.$store.dispatch('LoginByQrCode',{ userInfo,token,hosConfigArr,ssoToken,uapToken }).then(() => {
+        // this.$router.push({ path: this.redirect || '/' })
+       this.$router.push({ path: "/mainTabbar" });
+        })
         })
         .catch(
           (error) => console.log(error) //请求失败返回的数据
         );
     },
+
+    ssoLogin(responseData) {
+                let hosConfigArr = []; //放医院列表
+          let userInfo = null; //放用户信息
+          let token = ""; //放token
+          let ssoToken = ""; //单家医院
+          let uapToken = ""; //区域版
+            //sso登录数据
+        if(responseData.ssoData){
+        //赋值用户信息
+          if(!userInfo){
+            userInfo = {
+              userName: responseData.ssoData.userInfo.userName,
+              userPhone: responseData.ssoData.userInfo.userPhone,
+            }
+          }
+          if(!token){
+            token = responseData.ssoData.token;
+          }
+          ssoToken = responseData.ssoData.token;
+          //医院信息
+          let ssoHosConfig = responseData.ssoData.hosConfig.map(e => {
+            let moduleConfig = {
+              indexList: [],
+              patientList: [],
+            }
+            e.moduleConfig.toolsBar.forEach(item => {
+              let one = {
+                name: item.moduleName,
+                extJson:{
+                  moduleCode: item.moduleCode,
+                }
+              }
+              moduleConfig.indexList.push(one);
+            });
+            e.moduleConfig.navigateBar.forEach(item => {
+              let one = {
+                name: item.moduleName,
+                extJson:{
+                  moduleCode: item.moduleCode,
+                }
+              }
+              moduleConfig.patientList.push(one);
+            })
+            return {
+              hosName: e.hos_name,
+              hosCode: e.hos_code,
+              historyUrl: e.historyUrl,
+              serverUrl: e.business_IP + '/' + e.bs_pro_name,
+              moduleConfig: moduleConfig,
+              userId: e.userInfo.userId,
+              isSsoHos: true,
+            }
+          })
+          hosConfigArr = hosConfigArr.concat(ssoHosConfig);
+        }
+    }
   },
   created() {
-    this.$router.push({ path: "/mainTabbar" });
+    // this.$router.push({ path: "/mainTabbar" });
   },
   props: {
     msg: String,

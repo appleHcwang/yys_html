@@ -2,9 +2,11 @@
   <div class="mine">
     <div class="mine-top">
       <div class="top-head">
-        <img class="img-head" src="@/assets/yys/logo.png" alt="" />
-        <span>Ninesun</span>
-        <span>主任医师</span>
+        <img class="img-head" src="@/assets/yys/头像.png" alt="" />
+        <span style="margin-top: 9px; font-weight: 500">Ninesun</span>
+        <span class="doc-zc" style="margin-top: 10px; font-size: 10px"
+          >主任医师</span
+        >
       </div>
 
       <div class="top-menu">
@@ -21,42 +23,65 @@
     </div>
 
     <div class="mine-btm">
-      <van-cell
-        :icon="require('@/assets/yys/系统设置icon@2x.png')"
-        title="单元格"
-        is-link
-      />
-      <van-cell
-        :icon="require('@/assets/yys/系统设置icon@2x.png')"
-        title="单元格"
-        is-link
-      />
-      <van-cell
-        :icon="require('@/assets/yys/系统设置icon@2x.png')"
-        title="单元格"
-        is-link
-      />
-      <van-cell
-        :icon="require('@/assets/yys/系统设置icon@2x.png')"
-        title="单元格"
-        is-link
-      />
-      <van-cell
-        :icon="require('@/assets/yys/系统设置icon@2x.png')"
-        title="单元格"
-        is-link
-      />
+
+ <van-cell
+ 
+
+   v-for="item in menuList" :key="item"
+        center
+        @click="clickItem(item)"
+        :icon=item.icon
+        :title= item.title
+        is-link>
+ </van-cell>
     </div>
   </div>
 </template>
 
 <script>
+import { Dialog } from "vant";
 export default {
   name: "Mine",
   data() {
-    return {};
+    return {
+      menuList: [
+        {
+          title: "设备管理",
+          icon: require('@/assets/yys/系统设置icon@2x.png'),
+          index: 0,
+        },
+        {
+          title: "系统设置",
+          icon: require('@/assets/yys/系统设置icon@2x.png'),
+          index: 1,
+        },
+        {
+          title: "意见反馈",
+          icon: require('@/assets/yys/系统设置icon@2x.png'),
+          index: 2,
+        },
+        {
+          title: "关于我们",
+          icon: require('@/assets/yys/系统设置icon@2x.png'),
+          index: 2,
+        },
+      ],
+    };
   },
-  methods: {},
+  methods: {
+    clickItem(item) {
+      Dialog.confirm({
+        title: item.title,
+        message: "是否退出当前登录",
+      })
+        .then(() => {
+          // on confirm
+        })
+        .catch(() => {
+          // on cancel
+        });
+    },
+  },
 
   created() {},
   props: {
@@ -73,8 +98,15 @@ export default {
     flex-direction: column;
     align-items: center;
     .img-head {
+      margin-top: 108px;
       width: 64px;
       height: 64px;
+    }
+    .doc-zc {
+      border-radius: 2px;
+      border: 1px solid #339999;
+      padding: 2px 5px;
+      color: #339999;
     }
   }
   .top-menu {
@@ -83,36 +115,29 @@ export default {
     height: 80px;
     background: #339999;
     border-radius: 8px;
-    margin-left: 17px;
-    margin-right: 17px;
+    margin: 20px 17px 0px 17px;
     align-items: center;
-
+    box-shadow: 0px 8px 8px 0px rgba(51, 153, 153, 0.2);
     p {
       color: white;
       text-align: center;
       font-size: 24px;
     }
   }
-
 }
 
-  .van-cell {
-    height: 60px;
-    align-items: center;
-  }
- ::v-deep .van-cell__left-icon {
-display:-webkit-box;
-
--webkit-box-pack:center;
-
--webkit-box-align:center;
-
-  .van-icon__image {
-
-    
-  }
- }
-  // ::v-deep .van-cell__title {
-  //   height: 60px;
-  // }
+.mine-btm {
+  margin-top: 16px;
+}
+.van-cell {
+  height: 60px;
+  // align-items: center;
+}
+::v-deep .van-icon__image {
+  height: 24px;
+  line-height: 24px;
+}
+// ::v-deep .van-cell__title
+//   height: 60px;
+//
 </style>

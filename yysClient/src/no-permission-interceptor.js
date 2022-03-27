@@ -1,6 +1,11 @@
-import router from "./router";
+import router from './components/router/index';
 
-router.beforeEach(function() {
 
+router.beforeEach((to, from, next) => {
     
-})
+    next()
+  })
+
+  router.afterEach((to) => {
+ 
+  })
