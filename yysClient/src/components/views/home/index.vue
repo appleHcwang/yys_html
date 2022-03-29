@@ -2,7 +2,7 @@
 <template>
   <div class="home">
     <van-nav-bar
-      style="width:100%;position:fixed;top:0px;"
+      style="width: 100%; position: fixed; top: 0px"
       :safe-area-inset-top="true"
       title="消化内科"
       left-text="返回"
@@ -23,52 +23,47 @@
       </template>
     </van-nav-bar>
 
-    <div  class="home-cnt">
-       <div class="swipe">
-      <van-swipe :loop="false" class="my-swipe" :autoplay="1000">
-        <van-swipe-item v-for="(image, index) in images" :key="index">
-          <img style="height: 170px" v-lazy="image" />
-        </van-swipe-item>
-      </van-swipe>
-    </div>
-    <van-search
-      class="search"
-      style="line-height: 20px"
-      @click="searchClick"
-      disabled="true"
-      placeholder="请输入搜索关键词"
-    />
-    <div>
-      <van-swipe
-        :loop="false"
-        style="background-color: white; height: 202px"
-        class="my-swipe"
-      >
-        <van-swipe-item v-for="n in menu" :key="n">
-          <van-grid :border="false" :column-num="4">
-            <van-grid-item
-              @click="handleItemClick(e, value)"
-              v-for="value in n"
-              :key="value"
-              :icon="value.extJson.iconUrl"
-              :text="value.name"
-            />
-          </van-grid>
-        </van-swipe-item>
-      </van-swipe>
-    </div>
+    <div class="home-cnt">
+      <div class="swipe">
+        <van-swipe :loop="false" class="my-swipe" :autoplay="1000">
+          <van-swipe-item v-for="(image, index) in images" :key="index">
+            <img style="height: 170px" v-lazy="image" />
+          </van-swipe-item>
+        </van-swipe>
+      </div>
+      <van-search
+        class="search"
+        style="line-height: 20px"
+        @click="searchClick"
+        disabled="true"
+        placeholder="请输入搜索关键词"
+      />
+      <div>
+        <van-swipe
+          :loop="false"
+          style="background-color: white; height: 202px"
+          class="my-swipe"
+        >
+          <van-swipe-item v-for="n in menu" :key="n">
+            <van-grid :border="false" :column-num="4">
+              <van-grid-item
+                @click="handleItemClick(e, value)"
+                v-for="value in n"
+                :key="value"
+                :icon="value.extJson.iconUrl"
+                :text="value.name"
+              />
+            </van-grid>
+          </van-swipe-item>
+        </van-swipe>
+      </div>
 
-    <div class="wrapper-btm">
-      <div v-for="n in 20" class="item">
-        {{ n }}
+      <div class="wrapper-btm">
+        <div v-for="n in 20" v-bind:key="n" :class="{ 'item': true, 'rg-item': n % 2 === 0 }">
+          {{ n }}
+        </div>
       </div>
     </div>
-    </div>
-
-
-
-
-
   </div>
 </template>
 
@@ -163,50 +158,49 @@ export default {
 .home-cnt {
   margin-top: 64px;
   margin-bottom: 44px;
-.search {
-  margin-top: 10px;
-  margin-left: 20px;
-  margin-right: 20px;
-  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.06);
-  border-radius: 8px;
-  border: 1px solid #339999;
-}
-::v-deep .van-nav-bar__content {
-  height: 64px;
-
-}
-::v-deep .van-search__content {
-  background-color: white;
-}
-.my-swipe .van-swipe-item {
-  // margin-top: 64px;
-  color: #fff;
-  font-size: 20px;
-  text-align: center;
-}
-
-::v-deep .van-swipe__indicator {
-  background-color: $themeColor;
-}
-
-.wrapper-btm {
-  display: flex;
-  flex-wrap: wrap;
-  .item {
-    width: calc((100% - 60px)/2);
+  .search {
+    margin-top: 10px;
     margin-left: 20px;
-    
-    // margin-right: 20px;
-    margin-bottom: 14px;
-    height: 72px;
-
-    background: #ffffff;
-    box-shadow: 0px 4px 12px 0px rgba(31, 77, 77, 0.06);
+    margin-right: 20px;
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.06);
     border-radius: 8px;
-    border: 1px solid #d5e4e6;
+    border: 1px solid #339999;
+  }
+  ::v-deep .van-nav-bar__content {
+    height: 64px;
+  }
+  ::v-deep .van-search__content {
+    background-color: white;
+  }
+  .my-swipe .van-swipe-item {
+    // margin-top: 64px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  ::v-deep .van-swipe__indicator {
+    background-color: $themeColor;
+  }
+
+  .wrapper-btm {
+    display: flex;
+    flex-wrap: wrap;
+    .item {
+      width: calc((100% - 54px) / 2);
+      margin-left: 20px;
+      margin-bottom: 14px;
+      height: 72px;
+      background: #ffffff;
+      box-shadow: 0px 4px 12px 0px rgba(31, 77, 77, 0.06);
+      border-radius: 8px;
+      border: 1px solid #d5e4e6;
+    }
+    .rg-item {
+      margin-left: 14px;
+      // margin-right: 20px;
+      margin-right: 20px;
+    }
   }
 }
-}
-
-
 </style>
