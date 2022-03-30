@@ -125,9 +125,15 @@ export default {
       alert("sfs");
     },
     handleItemClick(e, val) {
+          this.$router.push({
+          path: '/commonIframe',
+          query: {
+          url: 'https://m.baidu.com/?from=1012852z'
+          }
+        })
       // alert(JSON.stringify(val));
 
-      plus.runtime.openWeb(val.url);
+      // plus.runtime.openWeb(val.url);
     },
     group(array, subNum) {
       let index = 0;

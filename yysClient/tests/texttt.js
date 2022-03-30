@@ -1,11 +1,11 @@
 
 
-export default function(x,y) {
+// export default function(x,y) {
 
-    return x+y;
-}
+//     return x+y;
+// }
 
-export  function qq(x,y,z) {
+// export  function qq(x,y,z) {
 
-    return x*y*z;
-}
+//     return x*y*z;
+// }
