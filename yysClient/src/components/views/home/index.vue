@@ -57,25 +57,26 @@
           </van-swipe-item>
         </van-swipe>
       </div>
-
       <div class="wrapper-btm">
         <div class="btm-title">
-    
-           <span class="left-bz"></span>
- 
-          <span style="position: absolute; left: 36px;font-size: 18px;
-font-weight: 500;">昨日概览统计</span>
-
-          <span style="right: 32px;position: absolute;" @click="goDetail">详情</span>
+          <span class="left-bz"></span>
+          <span
+            style="
+              position: absolute;
+              left: 36px;
+              font-size: 18px;
+              font-weight: 500;
+            "
+            >昨日概览统计</span
+          >
+          <span style="right: 32px; position: absolute" @click="goDetail"
+            >详情</span
+          >
           <img
             style="width: 12px; height: 12px; position: absolute; right: 20px"
             src="@/assets/yys/列表箭头icon.png"
             alt=""
           />
-         
-
-
-
         </div>
         <div class="btn-cnt">
           <div
@@ -149,7 +150,7 @@ export default {
       alert("sfs");
     },
     goDetail() {
-  alert('dd')
+      alert("dd");
     },
     handleItemClick(e, val) {
       this.$router.push({
