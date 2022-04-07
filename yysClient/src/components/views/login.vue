@@ -49,6 +49,7 @@
 
 <script>
 import { Toast } from "vant";
+import { loginPhone } from "@/services/api-url/login.js"
 export default {
   name: "Login",
   data() {
@@ -61,15 +62,6 @@ export default {
     onSubmit(values) {
       console.log("submit", values);
       let postData = {
-        appVersion: "1499",
-        descDevice: "SM-G9810",
-        imei: "",
-        mac: "00c58b70fc12764aaa36f102e71fff974a9f66915a96c1bfbf663b8d74ff7cef",
-        method: "S001",
-        networkType: "WIFI",
-        orgId: "1002",
-        orgName: "新疆自治区人民医院",
-        osInfo: "ANDROID",
         params: {
           zlwLogin: true,
           deviceType: "ANDROID",
@@ -78,13 +70,15 @@ export default {
           deviceId: "05eee9a89432ae060ed3305250f8bc44",
           username: "13856018636",
         },
-        phoneNum: "13856018636",
-        skey: "dfgS^%_DGks$$@#46q9_8avgzhEs35q2f3",
-        stringVersion: "合肥大区",
-        token: "09443a80c30f4df09e0d17e77116edab",
-        wgLat: "31.834578",
-        wgLon: "117.144944",
       };
+
+  loginPhone(postData).then((res)=> {
+
+  }).finally(()=> {
+
+  })
+
+return;
       this.$http({
         method: "post",
         url: "YYS-SSOServer/gateway/uap-service-ext-service/v1/pb/login/phone",

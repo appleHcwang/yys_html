@@ -19,7 +19,7 @@ module.exports = defineConfig({
         }
       },
       '/YYS-SSOServer':{
-        target:'https://yys-dev.iflyhealth.com',
+        target:'https://yys-dev.iflyhealth.com/',
         pathRewrite:{
           '^/YYS-SSOServer':'/'
         }
@@ -33,3 +33,4 @@ module.exports = defineConfig({
   }
 })
 
+//YYS-SSOServer/gateway/uap-service-ext-service/v1/pb/login/phone",

@@ -23,3 +23,6 @@ app.config.globalProperties.$store = store
 //   let response = JSON.parse(r);
 //   console.log(response)
 // })
+
+
+//   "type": "module",
