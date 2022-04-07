@@ -30,6 +30,9 @@ module.exports = defineConfig({
   chainWebpack: config => {
     // key,value自行定义
     config.resolve.alias.set('@', resolve('src')) 
+  },
+  configureWebpack: {
+    devtool: 'source-map'
   }
 })
 

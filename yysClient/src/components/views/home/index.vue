@@ -59,8 +59,32 @@
       </div>
 
       <div class="wrapper-btm">
-        <div v-for="n in 20" v-bind:key="n" :class="{ 'item': true, 'rg-item': n % 2 === 0 }">
-          {{ n }}
+        <div class="btm-title">
+    
+           <span class="left-bz"></span>
+ 
+          <span style="position: absolute; left: 36px;font-size: 18px;
+font-weight: 500;">昨日概览统计</span>
+
+          <span style="right: 32px;position: absolute;" @click="goDetail">详情</span>
+          <img
+            style="width: 12px; height: 12px; position: absolute; right: 20px"
+            src="@/assets/yys/列表箭头icon.png"
+            alt=""
+          />
+         
+
+
+
+        </div>
+        <div class="btn-cnt">
+          <div
+            v-for="n in 20"
+            v-bind:key="n"
+            :class="{ item: true, 'rg-item': n % 2 === 0 }"
+          >
+            {{ n }}
+          </div>
         </div>
       </div>
     </div>
@@ -124,13 +148,16 @@ export default {
     click() {
       alert("sfs");
     },
+    goDetail() {
+  alert('dd')
+    },
     handleItemClick(e, val) {
-          this.$router.push({
-          path: '/commonIframe',
-          query: {
-          url: 'https://m.baidu.com/?from=1012852z'
-          }
-        })
+      this.$router.push({
+        path: "/commonIframe",
+        query: {
+          url: "https://m.baidu.com/?from=1012852z",
+        },
+      });
       // alert(JSON.stringify(val));
 
       // plus.runtime.openWeb(val.url);
@@ -190,23 +217,38 @@ export default {
   }
 
   .wrapper-btm {
-    display: flex;
-    flex-wrap: wrap;
-    .item {
-      width: calc((100% - 54px) / 2);
-      margin-left: 20px;
-      margin-bottom: 14px;
-      height: 72px;
-      background: #ffffff;
-      box-shadow: 0px 4px 12px 0px rgba(31, 77, 77, 0.06);
-      border-radius: 8px;
-      border: 1px solid #d5e4e6;
+    .btm-title {
+      display: inline-flex;
+      padding: 21px 20px;
+      width: 100%;
+      align-items: center;
+      position: relative;
     }
-    .rg-item {
-      margin-left: 14px;
-      // margin-right: 20px;
-      margin-right: 20px;
+    .btn-cnt {
+      display: flex;
+      flex-wrap: wrap;
+      .item {
+        width: calc((100% - 54px) / 2);
+        margin-left: 20px;
+        margin-bottom: 14px;
+        height: 72px;
+        background: #ffffff;
+        box-shadow: 0px 4px 12px 0px rgba(31, 77, 77, 0.06);
+        border-radius: 8px;
+        border: 1px solid #d5e4e6;
+      }
+      .rg-item {
+        margin-left: 14px;
+        // margin-right: 20px;
+        margin-right: 20px;
+      }
     }
+  }
+  .left-bz {
+    width: 6px;
+    height: 16px;
+    background: #ff9900;
+    border-radius: 3px;
   }
 }
 </style>

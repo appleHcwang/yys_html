@@ -12,8 +12,6 @@ export default async function ({ url, data = {}, method = 'post', headers = {} }
             params: config.data.params,
             orgId: config.data.hosCode,
             phoneNum: localStorage.getItem('userPhone'),
-            method: '',
-            osInfo: "ANDROID",
             imei: '530000000318641',
             mac: "00c58b70fc12764aaa36f102e71fff974a9f66915a96c1bfbf663b8d74ff7cef",
             osInfo: 'ANDROID',
@@ -23,7 +21,6 @@ export default async function ({ url, data = {}, method = 'post', headers = {} }
             networkType: 'WIFI',
             stringVersion: '演示版本',
             descDevice: "SM-G9810",
-            imei: "",
             method: "S001",
         };
         return config
@@ -34,24 +31,18 @@ export default async function ({ url, data = {}, method = 'post', headers = {} }
             ...config,
             timeout: 30 * 1000
         }
-        axios(axiosConfig).then((response) => {
-       const res = response.data
-        if (res.ec === '00068' && getToken()) {
-            
-
-        }
-        
-        if (res.s === '0') {
-            
-        }
-
-        if(res.s === '1'){
-         
-            return resolve(JSON.parse(res.r));
-          }
-
-        }).catch((error) => {
-
+        axios(axiosConfig).then(response => {
+            const res = response.data
+            if (res.ec === '00068' && getToken()) {
+                return reject(res.em);
+            }
+            if (res.s === '0') {
+            }
+            if (res.s === '1') {
+                return resolve(res.r);
+            }
+        }).catch(error => {
+          console.log(error)
 
         })
 
