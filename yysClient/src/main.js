@@ -3,13 +3,13 @@ import App from './App.vue'
 import './assets/style/reset.css';
 import 'vant/lib/index.css';
 import { vant } from '@/config/vant.config.js'
-import axios from '@/utils/ajax.js';
+// import axios from '@/utils/axios.js';
 import store from '@/store/index';
 import router from './components/router/index';
 
 import './no-permission-interceptor' 
 const app = createApp(App)
-app.config.globalProperties.$http = axios
+// app.config.globalProperties.$http = axios
 vant(app)
 app.use(store)
 app.use(router)

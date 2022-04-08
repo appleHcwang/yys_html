@@ -1,5 +1,7 @@
 import store from '@/store/index';
 
+import { setToken } from "@/utils/auth.js";
+
 //退出登录
 
 export function logout(rememberUserPhone) {
@@ -11,7 +13,7 @@ export function logout(rememberUserPhone) {
 
 //登录存储数据
 export function storageByLogin(token,userInfo,hosConfigArr,ssoToken,uapToken){
-    // setToken(token);
+    setToken(token);
     localStorage.setItem('uapToken',uapToken);
     localStorage.setItem('ssoToken',ssoToken);
     localStorage.setItem('userName',userInfo.userName);

@@ -1,8 +1,15 @@
-import axios from 'axios';
-import { getToken } from '../utils/auth.js'
 
+import axios from 'axios';
+import { getToken } from './auth.js'
 export default async function ({ url, data = {}, method = 'post', headers = {} }) {
     const commonRequestInter = function (config) {
+        let currentHos = localStorage.getItem('currentHos')
+        currentHos = currentHos ? JSON.parse(currentHos) : {};
+        if (config.data.serverBaseUrl) {
+            config.url = config.data.serverBaseUrl + url;
+        } else {
+            config.url = currentHos.serverUrl + url;
+        }
         config.data = {
             appVersion: '1200',
             osInfo: 'ANDROID',
@@ -34,14 +41,15 @@ export default async function ({ url, data = {}, method = 'post', headers = {} }
             if (res.ec === '00068' && getToken()) {
                 return reject(res.em);
             }
+            if (res.s === '0') {
+                return resolve(res.r)
+            }
             if (res.s === '1') {
                 return resolve(res.r);
             }
         }).catch(error => {
-          console.log(error)
-
+            console.log(error)
         })
-
     })
 }
 

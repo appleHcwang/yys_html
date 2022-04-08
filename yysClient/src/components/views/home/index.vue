@@ -150,7 +150,9 @@ export default {
       alert("sfs");
     },
     goDetail() {
-      alert("dd");
+        let currentHos = localStorage.getItem('currentHos')
+        currentHos = currentHos ? JSON.parse(currentHos) : {};
+      alert(currentHos);
     },
     handleItemClick(e, val) {
       this.$router.push({

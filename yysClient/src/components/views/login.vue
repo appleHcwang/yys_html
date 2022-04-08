@@ -148,9 +148,16 @@ export default {
                 isSsoHos: true,
               };
             });
-            hosConfigArr = hosConfigArr.concat(ssoHosConfig);
+            //hosConfigArr.concat(ssoHosConfig);
+            hosConfigArr = [...ssoHosConfig, ...hosConfigArr];
           }
-
+          //默认第一家医院
+          let currentHos = hosConfigArr[0];
+          if (currentHos.isSsoHos) {
+            token = ssoToken;
+          } else {
+            token = uapToken;
+          }
           this.$store
             .dispatch("LoginByQrCode", {
               userInfo,
@@ -165,7 +172,7 @@ export default {
             });
         })
         .finally(() => {
-          alert("fs");
+          Toast("over");
         });
     },
   },

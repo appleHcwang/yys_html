@@ -3,32 +3,28 @@
     <app-tabs ref="apptabs" :options="options" @onChange="onChange"> </app-tabs>
     <van-swipe
       @change="onChangeIndex"
-      :initial-swipe="page"
+      :initial-swipe="pageItem"
       :loop="false"
       :show-indicators="false"
     >
       <van-swipe-item v-for="item in options" :key="item.name">
+
         <div v-if="item.index === 0">
-          {{ item.label }}
+          <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
           <van-list
             v-model="loading"
             :finished="finished"
             finished-text="没有更多了"
             @load="onLoad"
           >
-            <!-- <van-cell v-for="item in list" :key="item" :title="item" /> -->
-
-        <pat-card v-for="item in list" :key="item">
-
-        </pat-card>
-
+            <pat-card v-for="item in patlist" :key="item" :patItem="item"> </pat-card>
           </van-list>
+          </van-pull-refresh>
         </div>
 
         <div v-else-if="item.index === 1">
-          {{ item.label }}
           <div class="search">
-           <van-search v-model="searchValue" placeholder="请输入搜索关键词" />
+            <van-search v-model="searchValue" placeholder="请输入搜索关键词" />
           </div>
           <van-list
             v-model="loading"
@@ -36,21 +32,21 @@
             finished-text="没有更多了"
             @load="onLoad"
           >
-            <van-cell v-for="item in list" :key="item" :title="item" />
+            <van-cell v-for="item in patlist" :key="item" :title="1" />
           </van-list>
         </div>
 
         <div v-else-if="item.index === 2">
-          {{ item.label }}
           <van-list
             v-model="loading"
             :finished="finished"
             finished-text="没有更多了"
             @load="onLoad"
           >
-            <van-cell v-for="item in list" :key="item" :title="item" />
+            <van-cell v-for="item in patlist" :key="item" :title="2" />
           </van-list>
         </div>
+
       </van-swipe-item>
     </van-swipe>
   </div>
@@ -60,18 +56,21 @@
 import AppTabs from "@/components/views/patient/AppTabs.vue";
 import PatCard from "@/components/views/patient/pat-card.vue";
 
+import { getPatientList } from "@/services/api-url/patient-list.js";
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Patient",
-  components: { AppTabs,PatCard
-  },
+  components: { AppTabs, PatCard },
   data() {
     return {
-      searchValue:'',
-      list: [],
-      page: 0,
+      searchValue: "",
+      patlist: [],
+      page: 1,
+      pageItem:0,
       loading: false,
       finished: false,
+      refreshing: false,
       options: [
         {
           name: "my",
@@ -97,26 +96,51 @@ export default {
       this.$refs.apptabs.parentHandleclick(obj.name);
     },
     onChange(name, index) {
-      this.page = index;
+      this.pageItem = index;
     },
 
     onLoad() {
-      // 异步更新数据
-      // setTimeout 仅做示例，真实场景中一般为 ajax 请求
-      // setTimeout(() => {
-        for (let i = 0; i < 20; i++) {
-          this.list.push(i);
+        if (this.refreshing) {
+          this.patlist = [];
+          this.page = 1
+          this.refreshing = false;
         }
-        // 加载状态结束
-        this.loading = false;
-        // 数据全部加载完成
-        if (this.list.length >= 40) {
-          this.finished = true;
-        }
-      // }, 1000);
+     let postData = {
+      params: {
+        bedNum: "",
+        deptId: "180",
+        pageSize: "10",
+        filters: [],
+        filters2: [],
+        deptNote: "",
+        pageNum: this.page,
+      },
+    };
+    getPatientList(postData).then((res) => {
+       let arr =  JSON.parse(res)
+  
+         this.patlist = [...arr];
+         console.log(this.patlist + 'dsd')
+  
+    }).finally(err => {
+ 
+    });
+    },
+    onRefresh() {
+         alert("Refresh")
+      // 清空列表数据
+      this.finished = false;
+
+      // 重新加载数据
+      // 将 loading 设置为 true，表示处于加载状态
+      this.loading = true;
+      this.onLoad();
     },
   },
-  created() {},
+   
+  created() {
+  
+  },
   props: {
     msg: String,
   },
