@@ -4,7 +4,7 @@
     <van-nav-bar
       style="width: 100%; position: fixed; top: 0px"
       :safe-area-inset-top="true"
-      title="消化内科"
+      :title="depName"
       left-text="返回"
       left-arrow
     >
@@ -97,6 +97,7 @@ export default {
   name: "Home-page",
   data() {
     return {
+      depName:'',
       images: [
         "https://img01.yzcdn.cn/vant/apple-1.jpg",
         "https://img01.yzcdn.cn/vant/apple-2.jpg",
@@ -180,6 +181,8 @@ export default {
     let hos = JSON.parse(localStorage.getItem("currentHos"));
 
     this.menu = this.group(hos.moduleConfig.indexList, 8);
+    
+     this.depName = JSON.parse(window.localStorage.getItem('ssoData')).userInfo.dptName
   },
   props: {
     msg: String,

@@ -48,9 +48,9 @@ const store = createStore({
     *HosList 患者中心医院筛选列表
     */
     LoginByQrCode({ commit },payload){
-        const { userInfo,token,hosConfigArr,ssoToken,uapToken } = payload;
+        const { userInfo,token,hosConfigArr,ssoToken,uapToken,ssoData} = payload;
         return new Promise((resolve) => {
-          storageByLogin(token,userInfo,hosConfigArr,ssoToken,uapToken)
+          storageByLogin(token,userInfo,hosConfigArr,ssoToken,uapToken,ssoData)
           resolve()
         })
       },

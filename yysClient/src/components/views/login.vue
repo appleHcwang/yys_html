@@ -101,8 +101,8 @@ export default {
             token = uapToken;
           }
           //sso 登录
-
-          if (responseData.ssoData) {
+          let ssoData = responseData.ssoData
+          if (ssoData) {
             //赋值用户信息
             if (!userInfo) {
               userInfo = {
@@ -158,6 +158,7 @@ export default {
           } else {
             token = uapToken;
           }
+          
           this.$store
             .dispatch("LoginByQrCode", {
               userInfo,
@@ -165,6 +166,7 @@ export default {
               hosConfigArr,
               ssoToken,
               uapToken,
+              ssoData
             })
             .then(() => {
               // this.$router.push({ path: this.redirect || '/' })
