@@ -1,6 +1,7 @@
 <template>
   <div class="pat-card">
-    <p style="background-color: #f2f2f2; height: 6px"></p>
+    <p  style="background-color: #f2f2f2; height: 6px"></p>
+    <span v-show=" patItem.BEATTENTED === '1' " class="pat-bq">已关注</span>
     <div class="pat-cardcnt">
       <p>
         <span style="font-size: 16px"> {{ patItem.hosBedNum }}床 </span>
@@ -12,25 +13,24 @@
       </p>
       <p>
         <span style="display: block; color: #999999; padding-bottom: 6px">
-          诊断：{{patItem.DIAGNOSIS}}
-          
+          诊断：{{ patItem.DIAGNOSIS }}
         </span>
       </p>
 
       <p class="pat-cntbtm">
         <span>
           <img src="@/assets/yys/保险类型图标.png" alt="" />
-          <span style="margin-left: 4px"> {{patItem.mainDoc}} </span>
+          <span style="margin-left: 4px"> {{ patItem.mainDoc }} </span>
         </span>
 
         <span style="margin-left: 14px">
           <img src="@/assets/yys/保险类型图标.png" alt="" />
-          <span style="margin-left: 4px"> {{patItem.feeType}} </span>
+          <span style="margin-left: 4px"> {{ patItem.feeType }} </span>
         </span>
 
         <span style="margin-left: 14px">
           <img src="@/assets/yys/保险类型图标.png" alt="" />
-          <span style="margin-left: 4px"> {{patItem.patHosDateIn}} </span>
+          <span style="margin-left: 4px"> {{ patItem.patHosDateIn }} </span>
         </span>
       </p>
     </div>
@@ -58,8 +58,18 @@ export default {
 
 <style lang="scss">
 .pat-card {
+  .pat-bq {
+    display: float;
+    background: #ff9900;
+    color: white;
+    border-radius: 0px 0px 6px 6px;
+    font-size: 9px;
+    padding: 3px 6px;
+    float: right;
+    margin-right: 10px;
+  }
   .pat-cardcnt {
-    padding: 16px 16px;
+    padding: 16px 16px 16px 16px;
     font-weight: 500;
     font-size: 14px;
 

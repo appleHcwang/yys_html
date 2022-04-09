@@ -1,6 +1,7 @@
 
 import axios from 'axios';
 import { getToken } from './auth.js'
+import { Toast } from "vant";
 export default async function ({ url, data = {}, method = 'post', headers = {} }) {
     const commonRequestInter = function (config) {
         let currentHos = localStorage.getItem('currentHos')
@@ -42,7 +43,8 @@ export default async function ({ url, data = {}, method = 'post', headers = {} }
                 return reject(res.em);
             }
             if (res.s === '0') {
-                return resolve(res.r)
+                 Toast(res.em)
+                return  reject(res.em);
             }
             if (res.s === '1') {
                 return resolve(res.r);

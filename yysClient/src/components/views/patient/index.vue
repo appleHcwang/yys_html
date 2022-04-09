@@ -8,17 +8,18 @@
       :show-indicators="false"
     >
       <van-swipe-item v-for="item in options" :key="item.name">
-
         <div v-if="item.index === 0">
           <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
-          <van-list
-            v-model="loading"
-            :finished="finished"
-            finished-text="没有更多了"
-            @load="onLoad"
-          >
-            <pat-card v-for="item in patlist" :key="item" :patItem="item"> </pat-card>
-          </van-list>
+            <van-list
+              v-model="loading"
+              :finished="finished"
+              :immediate-check="false"
+              finished-text="没有更多了"
+              @load="onLoad"
+            >
+              <pat-card v-for="item in patlist" :key="item" :patItem="item">
+              </pat-card>
+            </van-list>
           </van-pull-refresh>
         </div>
 
@@ -26,14 +27,24 @@
           <div class="search">
             <van-search v-model="searchValue" placeholder="请输入搜索关键词" />
           </div>
-          <van-list
+          <!-- <van-list
             v-model="loading"
             :finished="finished"
             finished-text="没有更多了"
-            @load="onLoad"
           >
-            <van-cell v-for="item in patlist" :key="item" :title="1" />
+            <van-cell v-for="item in patlist" :key="item" :title="1" /> -->
+               <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
+            <van-list
+              v-model="loading"
+              :finished="finished"
+              :immediate-check="false"
+              finished-text="没有更多了"
+              @load="onLoad"
+            >
+              <pat-card v-for="item in patlist" :key="item" :patItem="item">
+              </pat-card>
           </van-list>
+           </van-pull-refresh>
         </div>
 
         <div v-else-if="item.index === 2">
@@ -41,12 +52,10 @@
             v-model="loading"
             :finished="finished"
             finished-text="没有更多了"
-            @load="onLoad"
           >
             <van-cell v-for="item in patlist" :key="item" :title="2" />
           </van-list>
         </div>
-
       </van-swipe-item>
     </van-swipe>
   </div>
@@ -55,7 +64,7 @@
 <script>
 import AppTabs from "@/components/views/patient/AppTabs.vue";
 import PatCard from "@/components/views/patient/pat-card.vue";
-
+import { Toast } from "vant";
 import { getPatientList } from "@/services/api-url/patient-list.js";
 
 export default {
@@ -67,7 +76,7 @@ export default {
       searchValue: "",
       patlist: [],
       page: 1,
-      pageItem:0,
+      pageItem: 0,
       loading: false,
       finished: false,
       refreshing: false,
@@ -94,40 +103,26 @@ export default {
     onChangeIndex(index) {
       let obj = this.options[index];
       this.$refs.apptabs.parentHandleclick(obj.name);
+      this.onChange(obj.name,index);
     },
     onChange(name, index) {
       this.pageItem = index;
+      this.page =1
+      this.patlist = []
+    this.getPatList();
     },
 
     onLoad() {
-        if (this.refreshing) {
-          this.patlist = [];
-          this.page = 1
-          this.refreshing = false;
-        }
-     let postData = {
-      params: {
-        bedNum: "",
-        deptId: "180",
-        pageSize: "10",
-        filters: [],
-        filters2: [],
-        deptNote: "",
-        pageNum: this.page,
-      },
-    };
-    getPatientList(postData).then((res) => {
-       let arr =  JSON.parse(res)
-  
-         this.patlist = [...arr];
-         console.log(this.patlist + 'dsd')
-  
-    }).finally(err => {
- 
-    });
+      if (this.refreshing) {
+        this.patlist = [];
+        this.page = 1;
+        this.refreshing = false;
+      } else {
+        this.page++;
+      }
+      this.getPatList();
     },
     onRefresh() {
-         alert("Refresh")
       // 清空列表数据
       this.finished = false;
 
@@ -136,10 +131,49 @@ export default {
       this.loading = true;
       this.onLoad();
     },
+    getPatList() {
+      console.log(this.page + "aaa");
+      let postData = {
+        params: {
+          bedNum: "",
+          deptId: "180",
+          pageSize: "10",
+          filters: [this.pageItem === 0 ? "attention" : ""],
+          filters2: [],
+          deptNote: "",
+          type: "1",
+          pageNum: this.page,
+        },
+      };
+      getPatientList(postData)
+        .then((res) => {
+          let arr = JSON.parse(res);
+          if (arr.length === 0) {
+            this.finished = true;
+          } else {
+            if (this.patlist.length > 0) {
+              this.patlist = this.patlist.concat(arr);
+            } else {
+              this.patlist = [...arr];
+            }
+          }
+          this.loading = false;
+
+          console.log(this.patlist + "dsd");
+        })
+        .catch((reject) => {
+          this.finished = true;
+        })
+        .finally((err) => {
+          // Toast('over')
+          // 加载状态结束
+          this.loading = false;
+        });
+    },
   },
-   
+
   created() {
-  
+    this.getPatList();
   },
   props: {
     msg: String,
