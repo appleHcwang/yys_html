@@ -2,9 +2,10 @@
 <template>
   <div class="home">
     <van-nav-bar
-      style="width: 100%; position: fixed; top: 0px"
+      style="width: 100%; top: 0px"
       :safe-area-inset-top="true"
-      :title="depName"
+      fixed=true
+     
       left-text="返回"
       left-arrow
     >
@@ -15,6 +16,11 @@
         />
         <span style="font-size: 14px; color: #339999">PAD</span>
       </template>
+
+         <template #title>
+        <span @click="deptClick" style="font-size: 14px;">{{depName}}</span>
+      </template>
+
       <template #right>
         <van-icon
           :name="require('@/assets/yys/发现页-扫码图标.png')"
@@ -149,6 +155,9 @@ export default {
     },
     click() {
       alert("sfs");
+    },
+    deptClick() {
+    this.$router.push({ path: "/DeptSelect"})
     },
     goDetail() {
         let currentHos = localStorage.getItem('currentHos')

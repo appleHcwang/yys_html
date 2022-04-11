@@ -10,40 +10,56 @@ import Patient from '../views/patient/index.vue'
 
 import CommonIframe from '../views/home/common-iframe.vue'
 
+import DeptSelect from '../views/home/dept-select.vue'
+
 //登陆
 export const loginRouter = {
     path: '/',
     name: 'login',
     meta: {
         title: '登录',
-        index:0,
+        index: 0,
     },
     hidden: true,
     component: Login
 }
 
 
-export const  commonIframe  = {
+export const commonIframe = {
     path: '/commonIframe',
     name: 'commonIframe',
     meta: {
         title: 'commonIframe',
-        index:3,
+        index: 3,
     },
     hidden: true,
     component: CommonIframe
 
 }
 
+export const otherRouter = [
+    {
+        path: '/DeptSelect',
+        name: 'DeptSelect',
+        meta: {
+            title: '',
+            index: 4,
+        },
+        hidden: true,
+        component: DeptSelect
+
+    }
+]
+
 // 作为Main组件写在mainRouter里
 export const mainRouter = {
     path: '/mainTabbar',
     name: 'mainTabbar',
-     redirect: '/home',
+    redirect: '/home',
     meta: {
         notCache: true,
         title: '首页',
-        index:2
+        index: 2
     },
     component: Layout,
     children: [
@@ -51,26 +67,28 @@ export const mainRouter = {
             path: '/home',
             name: 'home',
             component: Home,
-            meta: { title: '首页',
-            index:2, }
+            meta: {
+                title: '首页',
+                index: 2,
+            }
         },
         {
             path: '/patient',
             name: 'patient',
             component: Patient,
-            meta: { title: '患者', index:2, },
+            meta: { title: '患者', index: 2, },
         },
         {
             path: '/message',
             name: 'message',
             component: Message,
-            meta: { title: '消息',  index:2,}
+            meta: { title: '消息', index: 2, }
         },
         {
             path: '/mine',
             name: 'mine',
             component: Mine,
-            meta: { title: '我的', index:2, }
+            meta: { title: '我的', index: 2, }
         },
     ]
 }
@@ -78,7 +96,8 @@ export const mainRouter = {
 const routes = [
     mainRouter,
     loginRouter,
-     commonIframe,
+    commonIframe,
+    ...otherRouter,
     {
         path: '/:pathMatch(.*)*',
         name: 'NotFound',
