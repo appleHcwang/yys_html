@@ -1,7 +1,6 @@
 <template>
   <div class="dept-select">
     <van-nav-bar
-      style="width: 100%; top: 0px"
       :safe-area-inset-top="true"
       title="省立医院"
       left-text="返回"
@@ -10,19 +9,42 @@
       @click-left="$router.back(-1)"
     >
     </van-nav-bar>
-    <div>
-      <van-index-bar>
-        <van-index-anchor index="A" />
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-        <van-cell title="文本" />
+<div class="dept-list">
+ <van-index-bar :index-list="indexList" :sticky='false' :sticky-offset-top=46>
+  <van-index-anchor index="1">标题1</van-index-anchor>
+  <van-cell title="文本" />
+  <van-cell title="文本" />
+  <van-cell title="文本" />
 
-        <van-index-anchor index="B" />
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-      </van-index-bar>
-    </div>
+  <van-index-anchor index="2">标题2</van-index-anchor>
+  <van-cell title="文本" />
+  <van-cell title="文本" />
+  <van-cell title="文本" />
+
+  <van-index-anchor index="3">标题2</van-index-anchor>
+  <van-cell title="文本" />
+  <van-cell title="文本" />
+  <van-cell title="文本" />
+
+  <van-index-anchor index="4">标题2</van-index-anchor>
+  <van-cell title="文本" />
+  <van-cell title="文本" />
+  <van-cell title="文本" />
+
+  <van-index-anchor index="5">标题2</van-index-anchor>
+  <van-cell title="文本" />
+  <van-cell title="文本" />
+  <van-cell title="文本" />
+
+  <van-index-anchor index="6">标题2</van-index-anchor>
+  <van-cell title="文本" />
+  <van-cell title="文本" />
+  <van-cell title="文本" />
+
+  
+</van-index-bar>
+</div>
+    
   </div>
 </template>
 
@@ -32,6 +54,8 @@ export default {
   components: {},
   data() {
     return {
+       indexList: [1, 2,3,4,5,6],
+      
       iActiveColor: "#ff0", //选中时文本为黄色
     };
   },
@@ -47,7 +71,17 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .dept-select {
-    display: flex;
+  // display: flex;
+  // flex-direction: column;
+  position: relative;
+    .dept-list {
+      top: 46px;
+      width: 100%;
+      position: absolute;
+      height: calc(100vh - 46px);
+      // overflow: auto;
+
+    }
 }
 
 </style>
