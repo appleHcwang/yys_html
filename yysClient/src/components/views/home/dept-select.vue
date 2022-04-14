@@ -10,8 +10,23 @@
     >
     </van-nav-bar>
 <div class="dept-list">
- <van-index-bar :index-list="indexList" :sticky='false' :sticky-offset-top=46>
-  <van-index-anchor index="1">标题1</van-index-anchor>
+ <van-index-bar :index-list="indexList" :sticky='true' :sticky-offset-top=46>
+    <!-- <van-index-anchor v-for="item in indexList" index="item">{{item}}
+
+<van-cell title="文本" />
+      
+    </van-index-anchor> -->
+
+    <div v-for="item in indexList">
+  <van-index-anchor index="item">{{item}}</van-index-anchor>
+<van-cell v-for="itm in obj[item]" :title="itm.deptName">
+  
+  </van-cell>
+  
+
+    </div>
+
+  <!-- <van-index-anchor index="1">标题1</van-index-anchor>
   <van-cell title="文本" />
   <van-cell title="文本" />
   <van-cell title="文本" />
@@ -39,7 +54,7 @@
   <van-index-anchor index="6">标题2</van-index-anchor>
   <van-cell title="文本" />
   <van-cell title="文本" />
-  <van-cell title="文本" />
+  <van-cell title="文本" /> -->
 
   
 </van-index-bar>
@@ -49,19 +64,72 @@
 </template>
 
 <script>
+import { getDeptList } from "@/services/api-url/hospital.js";
+
 export default {
   name: "DeptSelect",
   components: {},
   data() {
     return {
-       indexList: [1, 2,3,4,5,6],
-      
+      indexList: [],
+      deptList:[],
+      obj:{},
+        
       iActiveColor: "#ff0", //选中时文本为黄色
     };
   },
   methods: {},
 
-  created() {},
+  created() {
+    let currentHos = localStorage.getItem('currentHos')
+    currentHos = currentHos ? JSON.parse(currentHos) : {};
+   let data  ={
+     params: {
+   'orgId':currentHos.hosCode,
+   'orgName':currentHos.hosName
+   }}
+    getDeptList(data).then((res)=> {
+     this.deptList = JSON.parse(res)
+     console.log(this.deptList)
+     this.deptList.forEach(element => {
+       if (!this.indexList.includes(element.shouPin)) {
+         this.indexList.push(element.shouPin)
+       }
+     });
+    this.indexList = this.indexList.sort(function(s,t){
+            var a = s.toLowerCase();
+            var b = t.toLowerCase();
+            if(a < b) return -1;
+            if(a > b) return 1;
+            return 0;  
+     })
+
+   let arr = []
+   
+  let ob = {}
+   this.indexList.forEach(element => {  
+     console.log(element)
+
+         let dptList = []
+          this.deptList.forEach(dept => {
+           
+            if(element === dept.shouPin) {
+               dptList.push(dept)
+            }
+          })
+          ob[element] = dptList 
+       console.log(JSON.stringify(ob))
+   });
+   this.obj = ob
+
+    }).catch((error=>{
+        console.log(error)
+    }))
+   
+      //  NSDictionary *param = @{@"orgId":kCacheInfo.orgId,@"orgName":kCacheInfo.orgName};
+
+
+  },
   props: {
     msg: String,
   },
@@ -73,13 +141,9 @@ export default {
 .dept-select {
   // display: flex;
   // flex-direction: column;
-  position: relative;
+ 
     .dept-list {
-      top: 46px;
-      width: 100%;
-      position: absolute;
-      height: calc(100vh - 46px);
-      // overflow: auto;
+    padding-top: 46px;
 
     }
 }

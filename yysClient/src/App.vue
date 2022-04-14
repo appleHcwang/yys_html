@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <transition :name="transitionName">
+    <transition >
      <router-view class="view app-view"></router-view>
     </transition>
   </div>
