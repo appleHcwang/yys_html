@@ -1,0 +1,272 @@
+{
+  "moduleConfig" : {
+    "patientList" : [
+      {
+        "name" : "体征",
+        "extJson" : {
+          "moduleCode" : "sign"
+        }
+      },
+      {
+        "name" : "指南",
+        "extJson" : {
+          "moduleCode" : "guide"
+        }
+      },
+      {
+        "name" : "信息自定义",
+        "extJson" : {
+          "moduleCode" : "patInfo"
+        }
+      },
+      {
+        "name" : "汇总表",
+        "extJson" : {
+          "moduleCode" : "gatherTable"
+        }
+      },
+      {
+        "name" : "医嘱",
+        "extJson" : {
+          "moduleCode" : "order"
+        }
+      },
+      {
+        "name" : "病历",
+        "extJson" : {
+          "moduleCode" : "case"
+        }
+      },
+      {
+        "name" : "检查",
+        "extJson" : {
+          "moduleCode" : "chk_info"
+        }
+      },
+      {
+        "name" : "检验",
+        "extJson" : {
+          "moduleCode" : "test_info"
+        }
+      },
+      {
+        "name" : "心电",
+        "extJson" : {
+          "moduleCode" : "ecg"
+        }
+      },
+      {
+        "name" : "病理",
+        "extJson" : {
+          "moduleCode" : "pathology"
+        }
+      },
+      {
+        "name" : "备忘",
+        "extJson" : {
+          "moduleCode" : "memo"
+        }
+      },
+      {
+        "name" : "病历",
+        "extJson" : {
+          "moduleCode" : "case"
+        }
+      }
+    ],
+    "indexList" : [
+      {
+        "name" : "语音查房",
+        "extJson" : {
+          "moduleCode" : "WardRound"
+        }
+      },
+      {
+        "name" : "全科患者",
+        "extJson" : {
+          "moduleCode" : "patientList"
+        }
+      },
+      {
+        "name" : "待办事项",
+        "extJson" : {
+          "moduleCode" : "todoThing"
+        }
+      },
+      {
+        "name" : "医学指南",
+        "extJson" : {
+          "moduleCode" : "medicalGuide"
+        }
+      },
+      {
+        "name" : "消息中心",
+        "extJson" : {
+          "moduleCode" : "infCenter"
+        }
+      },
+      {
+        "name" : "会诊管理",
+        "extJson" : {
+          "moduleCode" : "consultation"
+        }
+      },
+      {
+        "name" : "通讯录",
+        "extJson" : {
+          "moduleCode" : "addr_book"
+        }
+      },
+      {
+        "name" : "体征一栏表",
+        "extJson" : {
+          "moduleCode" : "signView"
+        }
+      },
+      {
+        "name" : "今日手术",
+        "extJson" : {
+          "moduleCode" : "operationSchedule"
+        }
+      },
+      {
+        "name" : "模板管理",
+        "extJson" : {
+          "moduleCode" : "templateMng"
+        }
+      },
+      {
+        "name" : "院长查询",
+        "extJson" : {
+          "moduleCode" : "deanQuery"
+        }
+      },
+      {
+        "name" : "历史病历",
+        "extJson" : {
+          "moduleCode" : "historyCase"
+        }
+      },
+      {
+        "name" : "患者流动统计表",
+        "extJson" : {
+          "moduleCode" : "hosStat"
+        }
+      },
+      {
+        "name" : "查阅关注",
+        "extJson" : {
+          "moduleCode" : "consult_attention"
+        }
+      },
+      {
+        "name" : "我的查阅",
+        "extJson" : {
+          "moduleCode" : "consult_doctors"
+        }
+      },
+      {
+        "name" : "MDT会诊",
+        "extJson" : {
+          "moduleCode" : "mdt_consultation"
+        }
+      },
+      {
+        "name" : "MDT审核",
+        "extJson" : {
+          "moduleCode" : "mdt_audit"
+        }
+      },
+      {
+        "name" : "远程协作",
+        "extJson" : {
+          "moduleCode" : "remote_cooperation"
+        }
+      },
+      {
+        "name" : "MDT查询",
+        "extJson" : {
+          "moduleCode" : "mdt_require"
+        }
+      },
+      {
+        "name" : "MDT团队",
+        "extJson" : {
+          "moduleCode" : "mdt_team"
+        }
+      },
+      {
+        "name" : "远程查房",
+        "extJson" : {
+          "moduleCode" : "remote_ward_round"
+        }
+      },
+      {
+        "name" : "科间会诊",
+        "extJson" : {
+          "moduleCode" : "dept_consultation"
+        }
+      },
+      {
+        "name" : "MDT团队维护",
+        "extJson" : {
+          "moduleCode" : "mdt_team_manage_pc"
+        }
+      },
+      {
+        "name" : "MDT多学科会诊",
+        "extJson" : {
+          "moduleCode" : "mdt_multidisciplinary_meet_pc"
+        }
+      },
+      {
+        "name" : "MDT团队会诊",
+        "extJson" : {
+          "moduleCode" : "mdt_team_meet_pc"
+        }
+      },
+      {
+        "name" : "MDT团队会诊",
+        "extJson" : {
+          "moduleCode" : "mdt_team_meet_pc"
+        }
+      },
+      {
+        "name" : "科间会诊",
+        "extJson" : {
+          "moduleCode" : "dept_meet_pc"
+        }
+      },
+      {
+        "name" : "会诊审核",
+        "extJson" : {
+          "moduleCode" : "meet_audit_pc"
+        }
+      },
+      {
+        "name" : "多学科专家维护",
+        "extJson" : {
+          "moduleCode" : "multidisciplinary_experts_manage_pc"
+        }
+      },
+      {
+        "name" : "会诊统计",
+        "extJson" : {
+          "moduleCode" : "meet_statistical_pc"
+        }
+      },
+      {
+        "name" : "患者中心",
+        "extJson" : {
+          "moduleCode" : "patient_center_pc"
+        }
+      }
+    ]
+  },
+  "userId" : "xzwu6",
+  "hosName" : "研发第二医院",
+  "serverUrl" : "https:\/\/yys-dev.iflyhealth.com\/YYS-BusinessServer-yf",
+  "historyUrl" : "https:\/\/yys-dev.iflyhealth.com\/YYS-SketchServer",
+  "isSsoHos" : true,
+  "hosCode" : "SXRMYY"
+}
