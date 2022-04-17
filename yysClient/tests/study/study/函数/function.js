@@ -50,8 +50,15 @@ console.log(f.name)
 /*
 箭头函数
 */
-var f = v => v;
+var f = (v , w)=>{
+  if (v) {
+    v = 8
+  }
+  return v - w;
+};
 //等价于
 var m = function (v){
     return v
 }
+ 
+console.log(f(1,6))

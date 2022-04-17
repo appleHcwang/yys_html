@@ -2,12 +2,16 @@
   <div class="dept-select">
     <van-nav-bar
       :safe-area-inset-top="true"
-      title="省立医院"
       left-text="返回"
       fixed="true"
       left-arrow
       @click-left="$router.back(-1)"
     >
+      <template #title>
+        <span @click="hospitalSelClick" style="font-size: 14px">{{
+          hosName
+        }}</span>
+      </template>
     </van-nav-bar>
     <div class="dept-list">
       <van-index-bar
@@ -21,72 +25,107 @@
         </div>
       </van-index-bar>
     </div>
+
+    <van-popup
+      v-model:show="show"
+      round
+      position="bottom"
+      :style="{ height: '30%' }"
+    >
+      <HosPitalSelect @onCancel="onCancel" @onConfirm="onConfirm" />
+    </van-popup>
   </div>
 </template>
 
 <script>
 import { getDeptList } from "@/services/api-url/hospital.js";
-
+import HosPitalSelect from "../home/hospital-select.vue";
+import { setToken,getToken } from "@/utils/auth.js";
 export default {
   name: "DeptSelect",
-  components: {},
+  components: { HosPitalSelect },
   data() {
     return {
+      show: false,
       indexList: [],
       deptList: [],
+      currentHos: {},
       obj: {},
-
+      hosName: "",
       iActiveColor: "#ff0", //选中时文本为黄色
     };
   },
-  methods: {},
+  methods: {
+    hospitalSelClick() {
+      this.show = true;
+    },
+    onCancel() {
+      this.show = false;
+    },
+    onConfirm(value, index) {
+      this.currentHos = value;
+      console.log(JSON.stringify(this.currentHos),index);
+      localStorage.setItem("currentHos",JSON.stringify(this.currentHos))
+      if (this.currentHos.isSsoHos) {
+        setToken(localStorage.getItem("ssoToken"))
+      } else {
+        setToken(localStorage.getItem("uapToken"))
+      }
+      this.show = false;
+      this.getDeptListReq();
+    },
+    getDeptListReq() {
+      let t = getToken();
+      let data = {
+        params: {
+          orgId: this.currentHos.hosCode,
+          orgName: this.currentHos.hosName,
+          token: t,
+        },
+      };
+      getDeptList(data)
+        .then((res) => {
+          this.deptList = JSON.parse(res);
+          console.log(this.deptList);
+          this.deptList.forEach((element) => {
+            if (!this.indexList.includes(element.shouPin)) {
+              this.indexList.push(element.shouPin);
+            }
+          });
+          this.indexList = this.indexList.sort(function (s, t) {
+            var a = s.toLowerCase();
+            var b = t.toLowerCase();
+            if (a < b) return -1;
+            if (a > b) return 1;
+            return 0;
+          });
+
+          let ob = {};
+          this.indexList.forEach((element) => {
+            // console.log(element);
+            let dptList = [];
+            this.deptList.forEach((dept) => {
+              if (element === dept.shouPin) {
+                dptList.push(dept);
+              }
+            });
+            ob[element] = dptList;
+            // console.log(JSON.stringify(ob));
+          });
+          this.obj = ob;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
 
   created() {
     let currentHos = localStorage.getItem("currentHos");
     currentHos = currentHos ? JSON.parse(currentHos) : {};
-    let data = {
-      params: {
-        orgId: currentHos.hosCode,
-        orgName: currentHos.hosName,
-      },
-    };
-    getDeptList(data)
-      .then((res) => {
-        this.deptList = JSON.parse(res);
-        console.log(this.deptList);
-        this.deptList.forEach((element) => {
-          if (!this.indexList.includes(element.shouPin)) {
-            this.indexList.push(element.shouPin);
-          }
-        });
-        this.indexList = this.indexList.sort(function (s, t) {
-          var a = s.toLowerCase();
-          var b = t.toLowerCase();
-          if (a < b) return -1;
-          if (a > b) return 1;
-          return 0;
-        });
-
-        let arr = [];
-
-        let ob = {};
-        this.indexList.forEach((element) => {
-          console.log(element);
-
-          let dptList = [];
-          this.deptList.forEach((dept) => {
-            if (element === dept.shouPin) {
-              dptList.push(dept);
-            }
-          });
-          ob[element] = dptList;
-          console.log(JSON.stringify(ob));
-        });
-        this.obj = ob;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.currentHos = currentHos;
+    this.hosName = currentHos.hosName;
+    this.getDeptListReq();
 
     //  NSDictionary *param = @{@"orgId":kCacheInfo.orgId,@"orgName":kCacheInfo.orgName};
   },

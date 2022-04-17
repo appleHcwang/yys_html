@@ -16,8 +16,8 @@ export default async function ({ url, data = {}, method = 'post', headers = {} }
             osInfo: 'ANDROID',
             skey: 'dfgS^%_DGks$$@#46q9_8avgzhEs35q2f3',
             token: getToken(),
-            params: config.data.params,
-            orgId: config.data.hosCode,
+            params: JSON.stringify(config.data.params),
+            orgId: config.data.params.orgId,
             phoneNum: localStorage.getItem('userPhone'),
             imei: '530000000318641',
             mac: "00c58b70fc12764aaa36f102e71fff974a9f66915a96c1bfbf663b8d74ff7cef",
@@ -28,6 +28,8 @@ export default async function ({ url, data = {}, method = 'post', headers = {} }
             stringVersion: '演示版本',
             descDevice: "SM-G9810",
             method: "S001",
+            orgName: config.data.params.orgName,
+             
         };
         return config
     }
