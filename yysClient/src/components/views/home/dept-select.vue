@@ -86,7 +86,7 @@ export default {
       getDeptList(data)
         .then((res) => {
           this.deptList = JSON.parse(res);
-          console.log(this.deptList);
+         this.indexList = []
           this.deptList.forEach((element) => {
             if (!this.indexList.includes(element.shouPin)) {
               this.indexList.push(element.shouPin);
