@@ -23,17 +23,16 @@
     </div>
 
     <div class="mine-btm">
-
- <van-cell
- 
-
-   v-for="item in menuList" :key="item"
+      <van-cell
+        v-for="item in menuList"
+        :key="item"
         center
         @click="clickItem(item)"
-        :icon=item.icon
-        :title= item.title
-        is-link>
- </van-cell>
+        :icon="item.icon"
+        :title="item.title"
+        is-link
+      >
+      </van-cell>
     </div>
   </div>
 </template>
@@ -47,22 +46,22 @@ export default {
       menuList: [
         {
           title: "设备管理",
-          icon: require('@/assets/yys/系统设置icon@2x.png'),
+          icon: require("@/assets/yys/系统设置icon@2x.png"),
           index: 0,
         },
         {
           title: "系统设置",
-          icon: require('@/assets/yys/系统设置icon@2x.png'),
+          icon: require("@/assets/yys/系统设置icon@2x.png"),
           index: 1,
         },
         {
           title: "意见反馈",
-          icon: require('@/assets/yys/系统设置icon@2x.png'),
+          icon: require("@/assets/yys/系统设置icon@2x.png"),
           index: 2,
         },
         {
           title: "关于我们",
-          icon: require('@/assets/yys/系统设置icon@2x.png'),
+          icon: require("@/assets/yys/系统设置icon@2x.png"),
           index: 2,
         },
       ],
@@ -83,7 +82,12 @@ export default {
     },
   },
 
-  created() {},
+  created() {
+    // this.$store.commit("homeee/increment", 900);
+    // this.$store.commit("user/settess", "dsffsfsd");
+    console.log(this.$store.state.homeee.homeCounter + "f");
+    console.log(this.$store.state.user.token+ "s");
+  },
   props: {
     msg: String,
   },

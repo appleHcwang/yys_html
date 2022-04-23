@@ -4,8 +4,9 @@ import { getToken } from './auth.js'
 import { Toast } from "vant";
 export default async function ({ url, data = {}, method = 'post', headers = {} }) {
     const commonRequestInter = function (config) {
-        let currentHos = localStorage.getItem('currentHos')
+        let currentHos =  localStorage.getItem('currentHos')
         currentHos = currentHos ? JSON.parse(currentHos) : {};
+        console.log(JSON.stringify(config) + '参数')
         if (config.data.serverBaseUrl) {
             config.url = config.data.serverBaseUrl + url;
         } else {

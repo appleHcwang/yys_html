@@ -158,9 +158,9 @@ export default {
           } else {
             token = uapToken;
           }
-          
+          this.$store.commit('setcurrentHos',currentHos);
           this.$store
-            .dispatch("LoginByQrCode", {
+            .dispatch("user/LoginByQrCode", {
               userInfo,
               token,
               hosConfigArr,

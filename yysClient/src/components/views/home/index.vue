@@ -4,8 +4,7 @@
     <van-nav-bar
       style="width: 100%; top: 0px"
       :safe-area-inset-top="true"
-      fixed=true
-     
+      fixed="true"
       left-text="返回"
       left-arrow
     >
@@ -17,8 +16,8 @@
         <span style="font-size: 14px; color: #339999">PAD</span>
       </template>
 
-         <template #title>
-        <span @click="deptClick" style="font-size: 14px;">{{depName}}</span>
+      <template #title>
+        <span @click="deptClick" style="font-size: 14px">{{ depName }}</span>
       </template>
 
       <template #right>
@@ -99,11 +98,12 @@
 </template>
 
 <script>
+import $store from "@/store/index.js";
 export default {
   name: "Home-page",
   data() {
     return {
-      depName:'',
+      depName: "",
       images: [
         "https://img01.yzcdn.cn/vant/apple-1.jpg",
         "https://img01.yzcdn.cn/vant/apple-2.jpg",
@@ -157,11 +157,11 @@ export default {
       alert("sfs");
     },
     deptClick() {
-    this.$router.push({ path: "/DeptSelect"})
+      this.$router.push({ path: "/DeptSelect" });
     },
     goDetail() {
-        let currentHos = localStorage.getItem('currentHos')
-        currentHos = currentHos ? JSON.parse(currentHos) : {};
+      let currentHos = localStorage.getItem("currentHos");
+      currentHos = currentHos ? JSON.parse(currentHos) : {};
       alert(currentHos);
     },
     handleItemClick(e, val) {
@@ -187,11 +187,19 @@ export default {
 
   created() {
     // this.menu =   this.group(this.menuList,8)
+    console.log($store.state.token);
     let hos = JSON.parse(localStorage.getItem("currentHos"));
 
     this.menu = this.group(hos.moduleConfig.indexList, 8);
-    
-     this.depName = JSON.parse(window.localStorage.getItem('ssoData')).userInfo.dptName
+
+    let currentDept = JSON.parse(localStorage.getItem("currentDept"));
+    if (currentDept) {
+      this.depName = currentDept.deptName;
+    } else {
+      this.depName = JSON.parse(
+        window.localStorage.getItem("ssoData")
+      ).userInfo.dptName;
+    }
   },
   props: {
     msg: String,

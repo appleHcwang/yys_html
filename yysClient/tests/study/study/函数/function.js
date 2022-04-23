@@ -62,3 +62,23 @@ var m = function (v){
 }
  
 console.log(f(1,6))
+
+
+//闭包
+var addd = (function(){
+ var counter = 0;
+ return function(){
+   return counter + 1
+ }
+})()
+var x = addd()
+console.log(x)
+
+
+var bbb = (function(){
+
+  return 1
+})()
+
+var mmm = bbb()()
+console.log(mmm)

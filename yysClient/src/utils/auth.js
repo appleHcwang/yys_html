@@ -6,7 +6,7 @@ export function getToken() {
   }
   
 export function setToken(token) {
-    $store.commit('SET_TOKEN',token)
+    $store.commit('user/SET_TOKEN',token)
     return window.localStorage.setItem(TokenKey,token)
 }
 

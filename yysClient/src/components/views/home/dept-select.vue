@@ -21,7 +21,12 @@
       >
         <div v-for="item in indexList">
           <van-index-anchor index="item">{{ item }}</van-index-anchor>
-          <van-cell v-for="itm in obj[item]" :title="itm.deptName"> </van-cell>
+          <van-cell
+            @click="deptSelectClick(itm)"
+            v-for="itm in obj[item]"
+            :title="itm.deptName"
+          >
+          </van-cell>
         </div>
       </van-index-bar>
     </div>
@@ -40,7 +45,7 @@
 <script>
 import { getDeptList } from "@/services/api-url/hospital.js";
 import HosPitalSelect from "../home/hospital-select.vue";
-import { setToken,getToken } from "@/utils/auth.js";
+import { setToken, getToken } from "@/utils/auth.js";
 export default {
   name: "DeptSelect",
   components: { HosPitalSelect },
@@ -62,21 +67,41 @@ export default {
     onCancel() {
       this.show = false;
     },
+
+    /*
+     * Method 科室选择
+     */
+    deptSelectClick(item) {
+      this.$store.commit("hospital/setcurrentHos", this.currentHos);
+      this.$store.commit("hospital/setcurrentDept", item);
+      localStorage.setItem("currentHos", JSON.stringify(this.currentHos));
+      localStorage.setItem("currentDept", JSON.stringify(item));
+
+      this.$router.back(-1);
+    },
+    /**
+     * @method 选择医院
+     */
     onConfirm(value, index) {
       this.currentHos = value;
-      console.log(JSON.stringify(this.currentHos),index);
-      localStorage.setItem("currentHos",JSON.stringify(this.currentHos))
+      console.log(JSON.stringify(this.currentHos), index);
+      // localStorage.setItem("currentHos", JSON.stringify(this.currentHos));
       if (this.currentHos.isSsoHos) {
-        setToken(localStorage.getItem("ssoToken"))
+        setToken(localStorage.getItem("ssoToken"));
       } else {
-        setToken(localStorage.getItem("uapToken"))
+        setToken(localStorage.getItem("uapToken"));
       }
       this.show = false;
       this.getDeptListReq();
     },
+
+    /** 
+     * @method 科室请求
+     */
     getDeptListReq() {
       let t = getToken();
       let data = {
+        serverBaseUrl: this.currentHos.serverUrl,
         params: {
           orgId: this.currentHos.hosCode,
           orgName: this.currentHos.hosName,
@@ -86,7 +111,7 @@ export default {
       getDeptList(data)
         .then((res) => {
           this.deptList = JSON.parse(res);
-         this.indexList = []
+          this.indexList = [];
           this.deptList.forEach((element) => {
             if (!this.indexList.includes(element.shouPin)) {
               this.indexList.push(element.shouPin);
@@ -120,6 +145,9 @@ export default {
     },
   },
 
+/**
+ * @method  钩子函数
+ */
   created() {
     let currentHos = localStorage.getItem("currentHos");
     currentHos = currentHos ? JSON.parse(currentHos) : {};
