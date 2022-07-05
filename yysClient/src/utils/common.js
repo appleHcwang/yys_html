@@ -22,6 +22,7 @@ export function storageByLogin(token,userInfo,hosConfigArr,ssoToken,uapToken,sso
     localStorage.setItem('HosList',JSON.stringify(hosConfigArr));
     localStorage.setItem('currentHos',JSON.stringify(hosConfigArr[0]));//默认取第一个医院为当前医院。
     localStorage.setItem('ssoData',JSON.stringify(ssoData));
+    localStorage.setItem('userInfo',JSON.stringify(userInfo))
     //获取角色权限 MDTadminrole(管理员) roletest(普通用户)
     // localStorage.setItem('roleName',userInfo.roleName);
     // $store.commit('SET_NAME', userInfo.userName);

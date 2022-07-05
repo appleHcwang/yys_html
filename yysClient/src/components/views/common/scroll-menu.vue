@@ -64,7 +64,6 @@ export default {
         console.log("点击index: " + idx);
         this.$emit("clickLzMenuItem", this.menuItems[idx]);
       }
-
       //滚动 到中间
       let e = event.currentTarget;
       let left = e.offsetLeft - inbox.clientWidth / 2 + e.offsetWidth / 2;

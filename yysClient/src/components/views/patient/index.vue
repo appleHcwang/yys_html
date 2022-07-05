@@ -133,10 +133,11 @@ export default {
     },
     getPatList() {
       console.log(this.page + "aaa");
+      let currentDept =  localStorage.getItem("currentDept")
       let postData = {
         params: {
           bedNum: "",
-          deptId: "180",
+          deptId: JSON.parse(currentDept).deptCode,
           pageSize: "10",
           filters: [this.pageItem === 0 ? "attention" : ""],
           filters2: [],

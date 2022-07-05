@@ -196,9 +196,7 @@ export default {
     if (currentDept) {
       this.depName = currentDept.deptName;
     } else {
-      this.depName = JSON.parse(
-        window.localStorage.getItem("ssoData")
-      ).userInfo.dptName;
+      this.depName = JSON.parse(window.localStorage.getItem("userInfo")).orgName;
     }
   },
   props: {
