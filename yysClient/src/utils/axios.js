@@ -18,7 +18,7 @@ export default async function ({ url, data = {}, method = 'post', headers = {} }
             skey: 'dfgS^%_DGks$$@#46q9_8avgzhEs35q2f3',
             token: getToken(),
             params: JSON.stringify(config.data.params),
-            orgId: currentHos.hosCode,
+            orgId: config.data.params.orgId || currentHos.hosCode,
             phoneNum: localStorage.getItem('userPhone'),
             imei: '530000000318641',
             mac: "00c58b70fc12764aaa36f102e71fff974a9f66915a96c1bfbf663b8d74ff7cef",
@@ -29,7 +29,7 @@ export default async function ({ url, data = {}, method = 'post', headers = {} }
             stringVersion: '合肥大区',
             descDevice: "SM-G9810",
             method: "S001",
-            orgName: currentHos.hosName,
+            orgName: config.data.params.orgName || currentHos.hosName,
              
         };
         return config

@@ -84,6 +84,7 @@ export default {
      */
     onConfirm(value, index) {
       this.currentHos = value;
+      this.hosName = value.hosName
       console.log(JSON.stringify(this.currentHos), index);
       // localStorage.setItem("currentHos", JSON.stringify(this.currentHos));
       if (this.currentHos.isSsoHos) {
@@ -141,6 +142,8 @@ export default {
         })
         .catch((error) => {
           console.log(error);
+          this.deptList = []
+          this.indexList = []
         });
     },
   },
