@@ -1,9 +1,16 @@
 <template>
   <div class="patient-index">
-    <van-nav-bar>
+    
+  
+    <van-nav-bar
+         @click-left="$router.back(-1)">
+      <template #left>
     <van-icon name="arrow-left" />
-      <span
-        style="display:inline-flex;align-items:center;">
+  </template>
+
+    <template #title>
+      <span style="display:inline-flex;align-items:center;">
+     
         <span
           class="c-icon"
           :style="{ visibility:activePatIndex ? 'unset' : 'hidden' }"
@@ -18,6 +25,10 @@
           <van-icon name="arrow" />
         </span>
       </span>
+        </template>
+
+
+
     </van-nav-bar>
 
   
@@ -70,15 +81,22 @@ export default {
     // ...mapState(['patient/patInfo','patient/patList']),
     // ...mapGetters(['activePatIndex'])
     ...mapState({
-      patInfo: state => state.patient.patInfo
-    })
+      patInfo: state => state.patient.patInfo,
+      patList: state => state.patient.patList,
+      }),
+
+      ...mapGetters("patient",['activePatIndex'])
   },
  created() {
      console.log('dddddd')
-    console.log('nn' + JSON.stringify(this.patInfo))
+    console.log('nn' + JSON.stringify(this.patList))
   },
   methods: {
-
+  changePat(num) {
+    console.log(this.activePatIndex)
+   this.$store.commit('patient/setPatInfo',this.patList[this.activePatIndex + num])
+   this.$router.push({ params:{hosId:this.patInfo.hosId}})
+}
   }
 }
 </script>
