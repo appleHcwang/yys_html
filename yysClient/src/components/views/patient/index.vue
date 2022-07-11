@@ -41,7 +41,9 @@
               finished-text="没有更多了"
               @load="onLoad"
             >
-              <pat-card v-for="item in patlist" :key="item" :patItem="item">
+              <pat-card v-for="item in patlist" :key="item" :patItem="item"
+              @click="onClick(item)"
+              >
               </pat-card>
           </van-list>
            </van-pull-refresh>
@@ -100,6 +102,17 @@ export default {
     };
   },
   methods: {
+    onClick(item) {
+         
+
+// alert(JSON.stringify(item))
+
+   
+      this.$store.commit('patient/setPatInfo',item);
+      this.$router.push({ name:'patient-index',params:{ hosId:item.hosId } });
+
+
+    },
     onChangeIndex(index) {
       let obj = this.options[index];
       this.$refs.apptabs.parentHandleclick(obj.name);

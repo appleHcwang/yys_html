@@ -3,11 +3,13 @@ import userInfo from '../store/modules/user-info.js';
 import hospitalInfo from '../store/modules/hospital-info.js';
 
 import homeModule from '../store/modules/home.js';
+
+import patientModule from '../store/modules/patient.js';
 	
 import { storageByLogin, } from '@/utils/common.js';
 const store = createStore({
     // state: {
-      
+           
     //     patInfo: {}, //当前选中的患者
     //     patList: [], //患者列表
     // },
@@ -35,6 +37,7 @@ const store = createStore({
         homeee: homeModule,
         user: userInfo,
         hospital: hospitalInfo,
+        patient:patientModule,
       
 
     }

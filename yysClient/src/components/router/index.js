@@ -51,6 +51,16 @@ export const otherRouter = [
     }
 ]
 
+export const patientRouter =[
+    {
+        path:'/patient-index/:hosId',
+        name:'patient-index',
+        meta:{ title:'患者详情' },
+        component:()=>import('../views/patient/PatientIndex.vue')
+      },
+  
+]
+
 // 作为Main组件写在mainRouter里
 export const mainRouter = {
     path: '/mainTabbar',
@@ -97,6 +107,7 @@ const routes = [
     mainRouter,
     loginRouter,
     commonIframe,
+    ...patientRouter,
     ...otherRouter,
     {
         path: '/:pathMatch(.*)*',
