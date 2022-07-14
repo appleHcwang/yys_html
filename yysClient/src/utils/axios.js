@@ -21,7 +21,7 @@ export default async function ({ url, data = {}, method = 'post', headers = {
             osInfo: 'IOS',
             skey: 'dfgS^%_DGks$$@#46q9_8avgzhEs35q2f3',
             token: getToken(),
-            params: JSON.stringify(config.data.params),
+            params: config.data.params,
             orgId: config.data.params.orgId || currentHos.hosCode,
             deviceInfo:"{\"device\" : \"iPhone\",\"os\" : \"I\",\"cpuInfo\" : \"\", \"imei\" : \"5EE490BB59AD44ECB796618059FBFCAD\",  \"osVersion\" : \"15.5\", \"simSn\" : \"\", \"uuid\" : \"494d1adb2973b7a23c37652f8a19dbb8\",  \"screenHeight\" : \"812.000000\",  \"screenWidth\" : \"375.000000\",  \"macAddress\" : \"E8:50:8B:08:BD:88\",  \"carriers\" : \"中国联通\"}",
             phoneNum: localStorage.getItem('userPhone'),
@@ -35,8 +35,11 @@ export default async function ({ url, data = {}, method = 'post', headers = {
             descDevice: "SM-G9810",
             method: "",
             orgName: config.data.params.orgName || currentHos.hosName,
-            hosId: config.data.hosId ,
+            hosId: config.data.hosId,
             patHosDateOut: "",
+            busiAppid: "",
+            requestSn: "1438067500415",
+            auth: "",
         };
         
         return config

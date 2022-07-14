@@ -1,5 +1,4 @@
 <template>
-  检验
   <div class="inspect-list">
     <div class="scroll-box" style="height: 100%">
       <van-list
@@ -80,7 +79,7 @@ export default {
     };
   },
   created() {
-    this.loadInspectList();
+   
   },
   methods: {
     loadInspectList() {
@@ -96,28 +95,19 @@ export default {
       };
       getPatientInspectList(postData)
         .then((result) => {
-          console.log("666" + result);
+            if(!result || result === '[]')return this.finished = true;
+            let res = JSON.parse(result)
+            this.inspectList.push(...res)
+              this.pageNum = String(+this.pageNum + 1);
+              this.loading = false;
+            console.log("MMMMMMM" + this.inspectList.length)
         })
-        .catch((reject) => {})
-        .finally((error) => {});
-
-      // let { r } = await this.$axios.post(`api/YYS-BusinessServer_V5/service/${ this.$store.state.userInfo.userId }/gettestreportlistcite/${ this.$store.state.patInfo.hosId }`,{
-      //   params:JSON.stringify({
-      //     pageNum:this.pageNum,
-      //     pageSize:'10',
-      //     filters:[]
-      //   }),
-      //   hosId:this.$store.state.patInfo.hosId,
-      //   'method': 'S0004'
-      // });
-
-      // if(!r || r === '[]')return this.finished = true;
-
-      // let result = JSON.parse(r);
-      // this.inspectList.push(...result);
-
-      // this.pageNum = String(+this.pageNum + 1);
-      // this.loading = false;
+        .catch((reject) => {
+          console.log(reject)
+        })
+        .finally((error) => {
+            console.log(error)
+        });
     },
   },
 };

@@ -1,10 +1,10 @@
 <template>
   <div class="patient-index">
-    <van-nav-bar>
+   
+    <van-nav-bar :fixed="true">
       <template #left>
         <van-icon name="arrow-left" @click="$router.go(-1)" />
       </template>
-
       <template #title>
         <span style="display: inline-flex; align-items: center">
           <span
@@ -28,24 +28,28 @@
         </span>
       </template>
     </van-nav-bar>
-    <van-tabs v-model="active" color="#339999" title-active-color="#339999">
-      <van-tab title="信息">
-        <PatientBaseInfo></PatientBaseInfo>
-      </van-tab>
-      <van-tab title="医嘱">
-        <advice-list :key="`advice${patInfo.hosId}`"></advice-list> 
-      </van-tab>
-      <van-tab title="病历">
-        <case-history-list :key="`case${patInfo.hosId}`"></case-history-list>
-      </van-tab>
-      <van-tab title="检查">
-        <!-- <check-list :key="`check${patInfo.hosId}`"></check-list> -->
-        <check-list></check-list>
-      </van-tab>
-      <van-tab title="检验">
-        <inspect-list :key="`inspect${patInfo.hosId}`"></inspect-list>
-      </van-tab>
-    </van-tabs>
+ 
+     
+      <van-tabs class="vatbar"  v-model="active" color="#339999" title-active-color="#339999" >
+        <van-tab title="信息">
+          <PatientBaseInfo></PatientBaseInfo>
+        </van-tab>
+        <van-tab title="医嘱">
+          <advice-list :key="`advice${patInfo.hosId}`"></advice-list>
+        </van-tab>
+        <van-tab title="病历">
+          <case-history-list :key="`case${patInfo.hosId}`"></case-history-list>
+        </van-tab>
+        <van-tab title="检查">
+          <!-- <check-list :key="`check${patInfo.hosId}`"></check-list> -->
+          <check-list></check-list>
+        </van-tab>
+        <van-tab title="检验">
+          <inspect-list :key="`inspect${patInfo.hosId}`"></inspect-list>
+        </van-tab>
+      </van-tabs>
+  
+
   </div>
 </template>
 <script>
@@ -118,5 +122,10 @@ export default {
       transform: translate3d(-50%, -50%, 0);
     }
   }
+  .vatbar {
+   margin-top: 44px;
+
+  }
+
 }
 </style>
