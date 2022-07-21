@@ -1,6 +1,7 @@
 <template>
   <div class="ocr-recognize-list">
  ocr 识别
+ {{ $route.params.id }}
   </div>
 </template>
 <script>
