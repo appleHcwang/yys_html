@@ -52,9 +52,9 @@ export default {
           zlwLogin: true,
           deviceType: "ANDROID",
           password: "81dc9bdb52d04dc20036dbd8313ed055",
-          phone: "13856018636",
-          deviceId: "05eee9a89432ae060ed3305250f8bc44",
-          username: "13856018636",
+          phone: "18556386157",
+          deviceId: "008f226f6398f14a5dc17a85cd52e538",
+          username: "18556386157",
         },
       };
       loginPhone(postData)

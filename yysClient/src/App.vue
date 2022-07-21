@@ -44,6 +44,10 @@ watch: {
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
   color: #2c3e50;
+  .scroll-box{
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 .fold-left-enter-active {
     animation-name: fold-left-in;

@@ -82,3 +82,9 @@ var bbb = (function(){
 
 var mmm = bbb()()
 console.log(mmm)
+
+
+console.log({})
+
+
+

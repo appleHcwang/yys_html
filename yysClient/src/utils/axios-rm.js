@@ -12,7 +12,7 @@ export default async function ({ url, data = {}, method = 'post', headers = {} }
             orgId: config.data.hosCode,
             phoneNum: localStorage.getItem('userPhone'),
             imei: '530000000318641',
-            mac: "00c58b70fc12764aaa36f102e71fff974a9f66915a96c1bfbf663b8d74ff7cef",
+            mac: "13A22D38-A069-4220-8A14-DE7D52875B73",
             //   'params': '{"address":"无定位信息","phoneNum":"18856074994","imei":"530000000318641","userPwd":"123456","mac":"08:00:27:FF:3D:16"}',
             wgLat: '39.90719154403526',
             wgLon: '116.39108247569935',
@@ -38,8 +38,35 @@ export default async function ({ url, data = {}, method = 'post', headers = {} }
                 return resolve(res.r);
             }
         }).catch(error => {
-          console.log(error)
+            console.log(error)
 
+        })
+
+        axios.interceptors.request.use((config) => {
+
+         
+            return config
+        }, (err) => {
+
+            return Promise.reject(err)
+        })
+
+        axios.interceptors.response.use((config) => {
+          
+            return config
+        }, (e) => {
+             // 401 一般是token 失效，403 是没有权限
+    if (e.response?.status === 401) {
+        window.location.reload();
+        return Promise.reject("rmp.vehicle.Nopermission");
+      }
+      if (e.response?.status === 403) {
+        return Promise.reject("rmp.vehicle.Nopermission");
+      }
+      if (e.response.status >= 500) {
+        return Promise.reject("serverError");
+      }
+      return Promise.reject(e);
         })
 
     })
