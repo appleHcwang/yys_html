@@ -12,6 +12,8 @@ import CommonIframe from '../views/home/common-iframe.vue'
 
 import DeptSelect from '../views/home/dept-select.vue'
 
+import OcrRecognizeList from '../views/OCR/OcrRecognizeList.vue'
+
 //登陆
 export const loginRouter = {
     path: '/',
@@ -47,6 +49,17 @@ export const otherRouter = [
         },
         hidden: true,
         component: DeptSelect
+
+    },
+    {
+        path: '/OcrList/:id',
+        name: 'OcrList',
+        meta: {
+            title: '',
+            index: 5,
+        },
+        hidden: true,
+        component: OcrRecognizeList
 
     }
 ]

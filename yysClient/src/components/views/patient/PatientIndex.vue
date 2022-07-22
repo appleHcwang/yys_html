@@ -1,131 +1,137 @@
 <template>
   <div class="patient-index">
-   
-    <van-nav-bar :fixed="true">
+    
+  
+    <van-nav-bar
+         @click-left="$router.back(-1)">
       <template #left>
-        <van-icon name="arrow-left" @click="$router.go(-1)" />
-      </template>
-      <template #title>
-        <span style="display: inline-flex; align-items: center">
-          <span
-            class="c-icon"
-            :style="{ visibility: activePatIndex ? 'unset' : 'hidden' }"
-            @click="changePat(-1)"
-          >
-            <van-icon name="arrow-left" />
-          </span>
-          <span>{{ `${patInfo.hosBedNum}床  ${patInfo.patName}` }}</span>
-          <span
-            class="c-icon"
-            :style="{
-              visibility:
-                activePatIndex === patList.length - 1 ? 'hidden' : 'unset',
-            }"
-            @click="changePat(1)"
-          >
-            <van-icon name="arrow" />
-          </span>
-        </span>
-      </template>
-    </van-nav-bar>
- 
+    <van-icon name="arrow-left" />
+  </template>
+
+    <template #title>
+      <span style="display:inline-flex;align-items:center;">
      
-      <van-tabs class="vatbar"  v-model="active" color="#339999" title-active-color="#339999" >
-        <van-tab title="信息">
-          <PatientBaseInfo></PatientBaseInfo>
-        </van-tab>
-        <van-tab title="医嘱">
-          <advice-list :key="`advice${patInfo.hosId}`"></advice-list>
-        </van-tab>
-        <van-tab title="病历">
-          <case-history-list :key="`case${patInfo.hosId}`"></case-history-list>
-        </van-tab>
-        <van-tab title="检查">
-          <!-- <check-list :key="`check${patInfo.hosId}`"></check-list> -->
-          <check-list></check-list>
-        </van-tab>
-        <van-tab title="检验">
-          <inspect-list :key="`inspect${patInfo.hosId}`"></inspect-list>
-        </van-tab>
-      </van-tabs>
+        <span
+          class="c-icon"
+          :style="{ visibility:activePatIndex ? 'unset' : 'hidden' }"
+          @click="changePat(-1)">
+          <van-icon name="arrow-left" />
+        </span>
+        <span>{{ `${ patInfo.hosBedNum }床  ${ patInfo.patName }` }}</span>
+        <span
+          class="c-icon"
+          :style="{ visibility:(activePatIndex === patList.length - 1) ? 'hidden' : 'unset' }"
+          @click="changePat(1)">
+          <van-icon name="arrow" />
+        </span>
+      </span>
+        </template>
+
+
+
+    </van-nav-bar>
+
+  
   
 
+    <van-tabs
+      v-model="active"
+      color="#339999"
+      title-active-color="#339999">
+      <van-tab title="信息">
+        <PatientBaseInfo></PatientBaseInfo>
+      </van-tab>
+      <van-tab title="医嘱">
+        <advice-list :key="`advice${ patInfo.hosId }`"></advice-list>
+      </van-tab>
+      <van-tab title="病历">
+        <case-history-list :key="`case${ patInfo.hosId }`"></case-history-list>
+      </van-tab>
+      <van-tab title="检查">
+        <check-list :key="`check${ patInfo.hosId }`"></check-list>
+      </van-tab>
+      <van-tab title="检验">
+        <inspect-list :key="`inspect${ patInfo.hosId }`"></inspect-list>
+      </van-tab>
+    </van-tabs>
   </div>
 </template>
 <script>
-import { mapState, mapGetters } from "vuex";
-import CaseHistoryList from "./case-history/CaseHistoryList.vue";
-import InspectList from "./inspect/InspectList";
-import CheckList from "./check/CheckList";
-import AdviceList from "./doctor-advice/AdviceList";
+import { mapState,mapGetters } from 'vuex';
+import CaseHistoryList from './case-history/CaseHistoryList.vue';
+import InspectList from './inspect/InspectList';
+import CheckList from './check/CheckList';
+import AdviceList from './doctor-advice/AdviceList';
 export default {
-  name: "PatientIndex",
-  components: { AdviceList, CaseHistoryList, InspectList, CheckList },
-  data() {
-    return {
-      active: "",
-      key: 1,
-    };
+  name:'PatientIndex',
+  component:{
+    CaseHistoryList,
+    InspectList,
+    CheckList,
+    AdviceList,
+
   },
-  computed: {
+  data() {
+     return {
+      active:'',
+      key:1
+    }
+  },
+ computed:{
+  // https://blog.csdn.net/weixin_43959963/article/details/111295725
+  //VueX mapGetters 获取 Modules 中的Getters
     // ...mapState(['patient/patInfo','patient/patList']),
     // ...mapGetters(['activePatIndex'])
     ...mapState({
-      patInfo: (state) => state.patient.patInfo,
-      patList: (state) => state.patient.patList,
-    }),
+      patInfo: state => state.patient.patInfo,
+      patList: state => state.patient.patList,
+      }),
 
-    ...mapGetters("patient", ["activePatIndex"]),
+      ...mapGetters("patient",['activePatIndex'])
   },
-  created() {
-    console.log("dddddd");
-    console.log("nn" + JSON.stringify(this.patList));
+ created() {
+     console.log('dddddd')
+    console.log('nn' + JSON.stringify(this.patList))
   },
   methods: {
-    changePat(num) {
-      console.log(this.activePatIndex);
-      this.$store.commit(
-        "patient/setPatInfo",
-        this.patList[this.activePatIndex + num]
-      );
-      this.$router.push({ params: { hosId: this.patInfo.hosId } });
-    },
-  },
-};
+  changePat(num) {
+    console.log(this.activePatIndex)
+   this.$store.commit('patient/setPatInfo',this.patList[this.activePatIndex + num])
+   this.$router.push({ params:{hosId:this.patInfo.hosId}})
+}
+  }
+}
 </script>
 
 
 
 <style lang="scss">
-.patient-index {
-  .van-nav-bar__left {
+
+.patient-index{
+  .van-nav-bar__left{
     font-size: 22px;
   }
-  .c-icon {
+  .c-icon{
     position: relative;
     display: inline-block;
     width: 24px;
     height: 24px;
-    border: 1px solid #666666;
+    border:1px solid #666666;;
     border-radius: 50%;
-    &:first-child {
+    &:first-child{
       margin-right: 5px;
     }
-    &:last-child {
+    &:last-child{
       margin-left: 5px;
     }
     i {
       position: absolute;
-      top: 50%;
+      top:50%;
       left: 50%;
       color: #666666;
-      transform: translate3d(-50%, -50%, 0);
+      transform: translate3d(-50%,-50%,0);
     }
   }
-  .vatbar {
-   margin-top: 44px;
-
-  }
-
 }
+
 </style>
