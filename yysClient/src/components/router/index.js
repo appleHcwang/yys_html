@@ -14,6 +14,9 @@ import DeptSelect from '../views/home/dept-select.vue'
 
 import OcrRecognizeList from '../views/OCR/OcrRecognizeList.vue'
 
+
+import OcrRecognize from '../views/OCR/OcrRecognize.vue'
+
 //登陆
 export const loginRouter = {
     path: '/',
@@ -61,6 +64,16 @@ export const otherRouter = [
         hidden: true,
         component: OcrRecognizeList
 
+    },
+    {
+        path: '/OcrRecognize',
+        name: 'OcrRecognize',
+        meta: {
+            title: 'OCR识别',
+            index: 6,
+        },
+        hidden: true,
+        component: OcrRecognize
     }
 ]
 

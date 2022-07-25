@@ -35,9 +35,6 @@ watch: {
 </script>
 
 <style lang="scss">
-.app-view {
-  // background: yellow;
-}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -138,4 +135,19 @@ watch: {
       /* visibility: hidden; */
     }
   }
+</style>
+
+<style lang="scss">
+body{
+  padding: 0;
+  margin: 0;
+  color: #333;
+ 
+}
+
+html{
+ 
+ 
+}
+
 </style>
