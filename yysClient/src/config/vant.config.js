@@ -2,7 +2,7 @@ import {
     Button, List, Cell, CellGroup,
     Form, Field, Tabbar, TabbarItem,
     Swipe, SwipeItem, Search, Grid, GridItem, NavBar, Icon, Tab,
-     Tabs,PullRefresh,IndexBar, IndexAnchor,Popup,Picker,SwipeCell,Card,Uploader
+    Tabs, PullRefresh, IndexBar, IndexAnchor, Popup, Picker, SwipeCell, Card, Uploader, Collapse, CollapseItem
 } from 'vant';
 import { Lazyload } from 'vant';
 import { Dialog } from 'vant';
@@ -35,4 +35,6 @@ export function vant(app) {
     app.use(SwipeCell);
     app.use(Card);
     app.use(Uploader);
+    app.use(Collapse);
+    app.use(CollapseItem);
 }

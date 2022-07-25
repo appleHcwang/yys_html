@@ -17,6 +17,9 @@ import OcrRecognizeList from '../views/OCR/OcrRecognizeList.vue'
 
 import OcrRecognize from '../views/OCR/OcrRecognize.vue'
 
+
+import QuoteOcrList  from '../views/OCR/QuoteOcrList.vue'
+
 //登陆
 export const loginRouter = {
     path: '/',
@@ -74,7 +77,19 @@ export const otherRouter = [
         },
         hidden: true,
         component: OcrRecognize
-    }
+    },
+
+    {
+        path: '/QuoteOcrList',
+        name: 'QuoteOcrList',
+        meta: {
+            title: '引用OCR',
+            index: 7,
+        },
+        hidden: true,
+        component: QuoteOcrList
+    },
+    //
 ]
 
 export const patientRouter =[
