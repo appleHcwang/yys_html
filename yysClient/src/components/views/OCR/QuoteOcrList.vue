@@ -10,50 +10,51 @@
     >
     </van-nav-bar>
 
-   <div class="quote-list-cnt">
-
-  <van-collapse v-model="activeNames">
-  <van-collapse-item name="1">
-    <template #title>
-
-      <div class="title-cnt">
-       <span>引用病历</span>    
-          <span>
+    <div class="quote-list-cnt">
+      <van-collapse v-model="activeNames">
+        <van-collapse-item style="padding: 16px 16px 16px 16px" name="1">
+          <template #title>
+            <div class="title-cnt">
+              <span
+                style="
+                  font-weight: bold;
+                  line-height: 24px;
+                  height: 24px;
+                  font-size: 18px;
+                "
+              >
+                引用病历</span
+              >
+              <span
+                style="
+                  color: #666666;
+                  line-height: 20px;
+                  height: 20px;
+                  margin-top: 8px;
+                  font-size: 14px;
+                "
+              >
                 2022-07021 10:21
-          </span>
-      </div>
-
-    </template>
-     <div>
-        测试测试
-     </div>
-  </van-collapse-item>
-  <van-collapse-item title="标题2" name="2" icon="shop-o">
-    内容
-  </van-collapse-item>
-</van-collapse>
-
-
-   </div>
-
-
-
+              </span>
+            </div>
+          </template>
+          <div>测试测试</div>
+        </van-collapse-item>
+      </van-collapse>
+    </div>
   </div>
 </template>
 <script>
- 
 export default {
   name: "QuoteOcrList",
-  components: {
-    
-  },
+  components: {},
 
   data() {
     return {
       loading: false,
       finished: false,
       pageNum: "1",
-        activeNames: ['1'],
+      activeNames: [],
     };
   },
   created() {
@@ -77,20 +78,18 @@ export default {
     height: calc(100vh - 46px);
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    .title-cnt{
-        display: flex;
-        color: red;
-        flex-direction: column;
-     
+    .title-cnt {
+      display: flex;
+      // color: red;
+      flex-direction: column;
     }
   }
 
-
-  ::v-deep .van-cell__right-icon {
-  line-height: 36px;
-  align-items: center;
+  ::v-deep .van-cell {
+    padding: 20px 20px;
+    height: 90px;
+    align-items: center;
+    border-radius: 8px;
+  }
 }
-}
-
-
 </style>

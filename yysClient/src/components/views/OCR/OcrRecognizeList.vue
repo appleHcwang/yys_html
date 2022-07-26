@@ -35,6 +35,7 @@
     </div>
 
     <!-- <OcrListCard></OcrListCard> -->
+
   </div>
 </template>
 <script>
