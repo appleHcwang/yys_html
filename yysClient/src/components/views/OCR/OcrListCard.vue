@@ -1,6 +1,9 @@
 <template>
-  <div class="ocr-list-card">
-    <van-swipe-cell  class="swipe-cell">
+  <div
+  v-touch:longtap="collectOpen" class="ocr-list-card">
+    <van-swipe-cell 
+    :disabled="true" class="swipe-cell" >
+    <!-- <div class="swipe-cell"> -->
       <div class="card-cnt">
         <div style="display: flex; align-items: center">
           <span class="cnt-name">{{ itemObj.patName }}</span>
@@ -8,10 +11,17 @@
         </div>
         <p class="cnt-date">{{ itemObj.date }}</p>
       </div>
+      <!-- <template #right>
+        <van-button
+          square
+          text="删除"
+          type="danger"
+          class="delete-button"
+          @click="clickItem"
+        />
+      </template> -->
+    <!-- </div> -->
 
-      <template #right>
-        <van-button square text="删除" type="danger" class="delete-button" @click="clickItem"/>
-      </template>
     </van-swipe-cell>
   </div>
 </template>
@@ -35,8 +45,11 @@ export default {
   },
   mounted() {},
   methods: {
+    collectOpen(){
+     alert("sdsds")
+    },
     clickItem() {
-    alert(JSON.stringify(this.itemObj));
+      alert(JSON.stringify(this.itemObj));
     },
   },
 };

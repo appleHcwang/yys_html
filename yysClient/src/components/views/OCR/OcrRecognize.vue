@@ -86,13 +86,13 @@ export default {
 .ocr-recognize {
 
   &-cnt {
-    &:after {
-    display: block;
-  width:100%;
-  height:1px;
-  background-color:red;
-    content: "";
-  }
+  //   &:after {
+  //   display: block;
+  // width:100%;
+  // height:1px;
+  // background-color:red;
+  //   content: "";
+  // }
     height: calc(100vh - 56px);
 
     .qr-scanner {
