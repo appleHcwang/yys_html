@@ -84,15 +84,14 @@ export default {
 </script>
 <style scoped lang="scss">
 .ocr-recognize {
-
   &-cnt {
-  //   &:after {
-  //   display: block;
-  // width:100%;
-  // height:1px;
-  // background-color:red;
-  //   content: "";
-  // }
+    //   &:after {
+    //   display: block;
+    // width:100%;
+    // height:1px;
+    // background-color:red;
+    //   content: "";
+    // }
     height: calc(100vh - 56px);
 
     .qr-scanner {
@@ -118,9 +117,9 @@ export default {
       background: linear-gradient(
         180deg,
         rgba(0, 255, 51, 0) 43%,
-        #139B7F 211%
+        #139b7f 211%
       );
-      border-bottom: 3px solid #139B7F;
+      border-bottom: 3px solid #139b7f;
       transform: translateY(-100%);
       animation: radar-beam 2s infinite alternate;
       animation-timing-function: cubic-bezier(0.53, 0, 0.43, 0.99);
@@ -142,25 +141,25 @@ export default {
     .qr-scanner .box:after,
     .qr-scanner .box:before {
       top: 0;
-      border-top-color: #139B7F;
+      border-top-color: #139b7f;
     }
 
     .qr-scanner .angle:after,
     .qr-scanner .angle:before {
       bottom: 0;
-      border-bottom-color: #139B7F;
+      border-bottom-color: #139b7f;
     }
 
     .qr-scanner .box:before,
     .qr-scanner .angle:before {
       left: 0;
-      border-left-color: #139B7F;
+      border-left-color: #139b7f;
     }
 
     .qr-scanner .box:after,
     .qr-scanner .angle:after {
       right: 0;
-      border-right-color: #139B7F;
+      border-right-color: #139b7f;
     }
 
     @keyframes radar-beam {

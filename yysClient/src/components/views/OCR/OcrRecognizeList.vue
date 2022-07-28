@@ -12,6 +12,7 @@
     <div class="list-cnt">
       <div style="margin-bottom: 106px">
         <OcrListCard
+          @deleteCallback="deleteHandle"
           v-for="item in ocrList"
           :itemObj="item"
           :key="item.id"
@@ -35,11 +36,11 @@
     </div>
 
     <!-- <OcrListCard></OcrListCard> -->
-
   </div>
 </template>
 <script>
 import OcrListCard from "@/components/views/OCR/OcrListCard.vue";
+import { Toast } from "vant";
 export default {
   name: "OcrRecognizeList",
   components: {
@@ -51,15 +52,15 @@ export default {
       ocrList: [
         { patName: "张华", date: "2022-07-21 10:21", state: "1", id: "1" },
         { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "2" },
-        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "2" },
-        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "2" },
-        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "2" },
-        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "2" },
-        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "2" },
-        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "2" },
-        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "2" },
-        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "2" },
-        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "2" },
+        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "3" },
+        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "4" },
+        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "5" },
+        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "6" },
+        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "7" },
+        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "8" },
+        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "9" },
+        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "10" },
+        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "11" },
       ],
       loading: false,
       finished: false,
@@ -72,7 +73,13 @@ export default {
   mounted() {},
   methods: {
     gotoOcrRecognize() {
-      alert("ocr");
+      this.$router.push({
+        name: "OcrRecognize",
+        query: {},
+      });
+    },
+    deleteHandle(item) {
+      Toast(JSON.stringify(item));
     },
   },
 };
