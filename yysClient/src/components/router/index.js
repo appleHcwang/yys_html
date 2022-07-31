@@ -14,6 +14,7 @@ import DeptSelect from '../views/home/dept-select.vue'
 
 import OcrRecognizeList from '../views/OCR/OcrRecognizeList.vue'
 
+import OcrRecognizeResult from '../views/OCR/OcrRecognizeResult.vue'
 
 import OcrRecognize from '../views/OCR/OcrRecognize.vue'
 
@@ -89,6 +90,17 @@ export const otherRouter = [
         hidden: true,
         component: QuoteOcrList
     },
+    {
+        path: '/OcrRecognizeResult',
+        name: 'OcrRecognizeResult',
+        meta: {
+            title: 'OCR识别结果',
+            index: 7,
+        },
+        hidden: true,
+        component: OcrRecognizeResult
+    },
+    //
     //
 ]
 

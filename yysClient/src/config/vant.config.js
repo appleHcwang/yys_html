@@ -7,7 +7,6 @@ import {
 import { Lazyload } from 'vant';
 import { Dialog } from 'vant';
 
-
 export function vant(app) {
     app.use(Button);
     app.use(List)
