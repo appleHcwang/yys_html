@@ -27,7 +27,7 @@
         <span>转写原件</span>
       </div>
 
-      <div style="text-align: center">
+      <div style="text-align: center;position: relative;">
         <van-uploader
           :after-read="afterRead"
           v-model="fileList"
@@ -63,7 +63,7 @@
           </div>
         </div> -->
 
-        <QrScanner v-show="showQrScanner"></QrScanner>
+        <QrScanner style="position:absolute ; top: 0px;" v-show="showQrScanner"></QrScanner>
       </div>
 
       <van-button

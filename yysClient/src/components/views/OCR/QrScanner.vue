@@ -28,14 +28,15 @@ export default {
   text-align: center;
   width: 100%;
   position: relative;
+  top: 0px;
 }
 .qr-scanner .box {
   width: 213px;
-  height: 213px;
+  height: 273px;
   position: absolute;
   left: 50%;
-  top: -20px;
-  transform: translate(-50%, -50%);
+  // top: -20px;
+  transform: translate(-50%, 0%);
   overflow: hidden;
   // border: 0.1rem solid rgba(0, 255, 51, 0.2);
   /* background: url('http://resource.beige.world/imgs/gongconghao.png') no-repeat center center; */
@@ -59,9 +60,10 @@ export default {
   content: "";
   display: block;
   position: absolute;
-  width: 3vw;
-  height: 3vw;
+  width: 7vw;
+  height: 7vw;
   border: 0.2rem solid transparent;
+  // border-radius:8px;
 }
 
 .qr-scanner .box:after,
@@ -86,6 +88,22 @@ export default {
 .qr-scanner .angle:after {
   right: 0;
   border-right-color: #139b7f;
+}
+
+.qr-scanner .box:after {
+  border-top-right-radius: 8px;
+}
+
+.qr-scanner .box:before {
+  border-top-left-radius: 8px;
+}
+
+.qr-scanner .angle:before {
+  border-bottom-left-radius: 8px;
+}
+
+.qr-scanner .angle:after {
+  border-bottom-right-radius: 8px;
 }
 
 @keyframes radar-beam {
