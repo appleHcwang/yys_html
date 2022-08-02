@@ -87,6 +87,8 @@
 import { Toast } from "vant";
 import QrScanner from "@/components/views/OCR/QrScanner.vue";
 
+import { ocrOverAll } from "@/services/api-url/ocrapi.js"
+
 export default {
   name: "OcrRecognize",
   components: {
@@ -110,7 +112,11 @@ export default {
     afterRead(file) {
       // 此时可以自行将文件上传至服务器
       console.log("889977");
-      console.log(JSON.stringify(file));
+       console.log(file);
+      ocrOverAll({
+        'image':file.content.split(',')[1],
+        'filename':'yugpmmptr.png',
+      });
     },
     startOcrRecognize() {
       this.showQrScanner = true;

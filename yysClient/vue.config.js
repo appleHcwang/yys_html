@@ -24,6 +24,12 @@ module.exports = defineConfig({
           '^/YYS-SSOServer':'/'
         }
       },
+      '/OCR':{
+        target:'http://172.31.187.27:8080/aimed/v1/lancer',
+        pathRewrite:{
+          '^/OCR':''
+        }
+      },
     }
     // https:true
   },
