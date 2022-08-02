@@ -20,3 +20,18 @@ export function ocrOverAll(params) {
 }
 
 
+
+//通用识别
+export function medHistory(params) {
+  console.log(params,'jjjjjjjjj');
+  axios({
+      url: '/OCR/medHistory',
+      method: 'POST',
+      data: params
+    }).then(function (res) {
+     console.log(res)
+    }).catch(function (err) {
+    console.log(err)
+    })
+
+}

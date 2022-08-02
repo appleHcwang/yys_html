@@ -25,7 +25,7 @@ module.exports = defineConfig({
         }
       },
       '/OCR':{
-        target:'http://172.31.187.27:8080/aimed/v1/lancer',
+        target:'http://ocrservice.iflyhealth.com:1028/aimed/v1/lancer/',
         pathRewrite:{
           '^/OCR':''
         }
