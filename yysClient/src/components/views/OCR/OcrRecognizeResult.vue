@@ -55,7 +55,7 @@
         >
       </div>
 
-      <div style="text-align: center">内容</div>
+      <div style="text-align: center" v-html="resultStr"></div>
     </div>
   </div>
 </template>
@@ -70,10 +70,16 @@ export default {
     return {
       fileList: [],
       showQrScanner: false,
+      resultStr:'',
     };
   },
   created() {
     // this.loadCaseList();
+   console.log(this.$route.params.res)
+   let res = JSON.parse(this.$route.params.res)
+   let data = res.data.data
+  //  this.resultStr = res.data
+   console.log(data)
   },
   mounted() {},
   methods: {

@@ -93,6 +93,7 @@ export default {
   name: "OcrRecognize",
   components: {
     QrScanner,
+    file:{}
   },
 
   data() {
@@ -113,13 +114,18 @@ export default {
       // 此时可以自行将文件上传至服务器
       console.log("889977");
        console.log(file);
-      medHistory({
-        'image':file.content.split(',')[1],
-        'filename':'yugpmmptr.jpeg',
-      });
+       this.file = file
+   
     },
     startOcrRecognize() {
       this.showQrScanner = true;
+       medHistory({
+        'image':this.file.content.split(',')[1],
+        'filename':'yugpmmptr.jpeg',
+      }).then((res)=>{
+              this.$router.push({name:'OcrRecognizeResult',params: {res:JSON.stringify(res)}}) // 只能用 name
+
+      });
       Toast("开始识别");
     },
   },
