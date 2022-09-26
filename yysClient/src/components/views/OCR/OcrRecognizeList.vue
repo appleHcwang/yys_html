@@ -1,38 +1,21 @@
 <template>
   <div class="ocr-recognize-list">
-    <van-nav-bar
-      :fixed="true"
-      :placeholder="true"
-      :safe-area-inset-top="true"
-      title="OCR识别"
-      left-arrow
-      @click-left="$router.back(-1)"
-    >
+    <van-nav-bar :fixed="true" :placeholder="true" :safe-area-inset-top="true" title="OCR识别" left-arrow
+      @click-left="$router.back(-1)">
     </van-nav-bar>
     <div class="list-cnt">
       <div style="margin-bottom: 106px">
-        <OcrListCard
-          @deleteCallback="deleteHandle"
-          v-for="item in ocrList"
-          :itemObj="item"
-          :key="item.id"
-        ></OcrListCard>
+        <OcrListCard @deleteCallback="deleteHandle" v-for="item in ocrList" :itemObj="item" :key="item.id">
+        </OcrListCard>
       </div>
 
-      <van-button
-        type="primary"
-        size="large"
-        @click="gotoOcrRecognize"
-        color="#139B7F"
-        style="
+      <van-button type="primary" size="large" @click="gotoOcrRecognize" color="#139B7F" style="
           position: fixed;
           left: 16px;
           bottom: 40px;
           width: calc(100vw - 32px);
           border-radius: 8px;
-        "
-        >OCR识别</van-button
-      >
+        ">OCR识别</van-button>
     </div>
 
     <!-- <OcrListCard></OcrListCard> -->
@@ -50,17 +33,17 @@ export default {
   data() {
     return {
       ocrList: [
-        { patName: "张华", date: "2022-07-21 10:21", state: "1", id: "1" },
-        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "2" },
-        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "3" },
-        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "4" },
-        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "5" },
-        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "6" },
-        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "7" },
-        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "8" },
-        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "9" },
-        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "10" },
-        { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "11" },
+        // { patName: "张华", date: "2022-07-21 10:21", state: "1", id: "1" },
+        // { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "2" },
+        // { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "3" },
+        // { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "4" },
+        // { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "5" },
+        // { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "6" },
+        // { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "7" },
+        // { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "8" },
+        // { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "9" },
+        // { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "10" },
+        // { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "11" },
       ],
       loading: false,
       finished: false,
@@ -68,10 +51,54 @@ export default {
     };
   },
   created() {
-    // this.loadCaseList();
+
+    setTimeout(() => {
+      for (let i = 0; i < 10000000000; i++) {
+        console.log('dfdf')
+      }
+      console.log('mmmmmm')
+      alert('fsfs')
+      this.ocrList = []
+
+    }, 0);
+
+    console.log('fsfsfsfs')
+    this.ocrList = [
+      { patName: "张华", date: "2022-07-21 10:21", state: "1", id: "1" },
+      { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "2" },
+      { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "3" },
+      { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "4" },
+      { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "5" },
+      { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "6" },
+      { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "7" },
+      { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "8" },
+      { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "9" },
+      { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "10" },
+      { patName: "张丽梅", date: "2022-07-11 11:21", state: "2", id: "11" },
+    ]
+    // this.testpromise()
   },
-  mounted() {},
+  mounted() { },
   methods: {
+    testpromise() {
+    let promise =  new Promise(function (resolve, reject) {
+        if (true) {
+          resolve({ 'dfd': 'mnm' });
+        } else {
+          reject(error);
+        }
+      }).then((res) => {
+        console.log('mm')
+        console.log(res)
+     return res
+      }).then((res) => {
+        console.log('nn')
+        console.log(res)
+      });
+
+
+    },
+
     gotoOcrRecognize() {
       this.$router.push({
         name: "OcrRecognize",
@@ -96,6 +123,5 @@ export default {
   }
 }
 
-::v-deep .van-button-large-height {
-}
+::v-deep .van-button-large-height {}
 </style>

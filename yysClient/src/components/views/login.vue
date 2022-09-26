@@ -45,16 +45,17 @@ export default {
     };
   },
   methods: {
+    
     onSubmit(values) {
       console.log("submit", values);
       let postData = {
         params: {
           zlwLogin: true,
           deviceType: "ANDROID",
-          password: "81dc9bdb52d04dc20036dbd8313ed055",
-          phone: "18556386157",
+          password: "e10adc3949ba59abbe56e057f20f883e",
+          phone: "13856018636",
           deviceId: "008f226f6398f14a5dc17a85cd52e538",
-          username: "18556386157",
+          username: "13856018636",
         },
       };
       loginPhone(postData)
@@ -173,6 +174,8 @@ export default {
     },
   },
   created() {
+
+
     // this.$router.push({ path: "/mainTabbar" });
   },
   props: {

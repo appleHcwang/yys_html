@@ -1,3 +1,11 @@
+/*
+ * @Author: appleHcwang 2372233634@qq.com
+ * @Date: 2022-04-13 11:26:24
+ * @LastEditors: appleHcwang 2372233634@qq.com
+ * @LastEditTime: 2022-09-23 11:19:06
+ * @FilePath: /yysClient/tests/study/study/let和const/study.let.const.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 // //*
 // // ES6 新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。
 // //
@@ -64,5 +72,27 @@
 // 浏览器和 Web Worker 里面，self也指向顶层对象，但是 Node 没有self。
 // Node 里面，顶层对象是global，但其他环境都不支持。
 // */
+
+
+
+// let a = 'abcde'
+// let b = a.split('')
+//  b = b.reverse()
+// let c = b.join('')
+// console.log(c)
+  
+
+let obj1 = {name: 'Kobe',
+address:{
+x:100,
+y:100
+}
+}
+
+let obj2= {... obj1}
+
+obj1.address.x = 200;
+
+console.log(obj2)
 
 
