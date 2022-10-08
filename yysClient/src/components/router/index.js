@@ -23,6 +23,8 @@ import OcrRecognize from '../views/OCR/OcrRecognize.vue'
 
 import QuoteOcrList  from '../views/OCR/QuoteOcrList.vue'
 
+import ScrollXd from '../views/common/scroll-xd.vue'
+
 //登陆
 export const loginRouter = {
     path: '/',
@@ -158,12 +160,33 @@ export const mainRouter = {
     ]
 }
 
+
+
+export const testRouter = [
+    {
+   
+        path: '/scroll-xd',
+        name: 'scroll-xd',
+        meta: {
+            title: 'scrollXd',
+            index: 6,
+        },
+        hidden: true,
+        component: ScrollXd
+
+    
+
+    },
+
+]
+
 const routes = [
     mainRouter,
     loginRouter,
     commonIframe,
     ...patientRouter,
     ...otherRouter,
+    ...testRouter,
     {
         path: '/:pathMatch(.*)*',
         name: 'NotFound',

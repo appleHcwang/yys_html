@@ -53,6 +53,6 @@ app.config.globalProperties.$store = store
 //   })
 
 
-  import jsnative from "./utils/jsnative"
-  jsnative()
+  // import jsnative from "./utils/jsnative"
+  // jsnative()
 
