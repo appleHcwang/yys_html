@@ -66,6 +66,7 @@ export default {
       }
       //滚动 到中间
       let e = event.currentTarget;
+      console.log(e.offsetLeft,e.offsetWidth,inbox.clientWidth);
       let left = e.offsetLeft - inbox.clientWidth / 2 + e.offsetWidth / 2;
       inbox.scrollLeft = left;
     },
