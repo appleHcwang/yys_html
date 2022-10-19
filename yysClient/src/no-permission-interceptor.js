@@ -2,13 +2,11 @@ import router from './components/router/index';
 
 
 router.beforeEach((to, from, next) => {
-   if(localStorage.getItem('userInfo')) {
-    next()
+   if(!localStorage.getItem('userInfo') && to.name !== 'login') {
+    next({name: 'login'})
    } else {
-
+      next()
    }
-    
-    next()
   })
 
   router.afterEach((to) => {
