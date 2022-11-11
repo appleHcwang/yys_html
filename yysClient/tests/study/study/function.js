@@ -2,7 +2,7 @@
  * @Author: appleHcwang 2372233634@qq.com
  * @Date: 2022-07-06 10:04:40
  * @LastEditors: appleHcwang 2372233634@qq.com
- * @LastEditTime: 2022-09-27 15:18:09
+ * @LastEditTime: 2022-11-01 20:27:25
  * @FilePath: /yysClient/tests/study/study/函数/function.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -136,3 +136,15 @@ console.log('=======================================================')
 
 
 console.log(typeof q)
+
+let aa = {
+  aan:'fg'
+}
+console.log(aa.aab)
+
+if(aa.aab) {
+  console.log('mmm')
+} else {
+  console.log('nnn')
+}
+
