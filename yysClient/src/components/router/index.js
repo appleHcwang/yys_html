@@ -50,6 +50,34 @@ export const commonIframe = {
 
 }
 
+export const charts = [
+    {
+        path:'/chartIndex',
+        name:'chartIndex',
+        redirect:'/chartIndex/bgCharts',
+        meta:{
+            title:'chartIndex',
+            index:9,
+        },
+        component:()=>import('../views/Charts/index.vue'), 
+        children:[
+            {
+                path:'bgCharts',
+                name:'bgCharts',
+                meta: {
+                    title: 'df',
+                },
+                component:()=>import('../views/Charts/BgCharts.vue')
+            },
+            {
+                path:'zzCharts',
+                name:'zzCharts',
+                component:()=>import('../views/Charts/ZzCharts.vue')
+            }
+        ]
+    },
+ ]
+
 export const otherRouter = [
     {
         path: '/DeptSelect',
@@ -187,6 +215,7 @@ const routes = [
     ...patientRouter,
     ...otherRouter,
     ...testRouter,
+    ...charts,
     {
         path: '/:pathMatch(.*)*',
         name: 'NotFound',
