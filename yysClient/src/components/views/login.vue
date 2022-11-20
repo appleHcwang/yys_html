@@ -174,7 +174,7 @@ export default {
     },
   },
   created() {
-
+    this.$func.http()
 
     // this.$router.push({ path: "/mainTabbar" });
   },
