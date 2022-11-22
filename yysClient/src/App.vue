@@ -1,9 +1,12 @@
 <template>
   <div id="app">
+
+    <div> {{ $func.sum(5,5) }}</div>
+  
     <transition >
      <router-view class="view app-view"></router-view>
     </transition>
-  </div>
+  </div>ß
   <!-- <Login msg="Welcome to Your Vue.js App"/> -->
 </template>
 
@@ -31,6 +34,16 @@ watch: {
   components: {
     Login,
   },
+ created() {
+  
+ },
+
+  methods: {
+    getTest() {
+      let abc = 'abcmm'
+      return `${abc}`
+    }
+  }
 };
 </script>
 
