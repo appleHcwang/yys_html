@@ -9,8 +9,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import './assets/style/reset.css';
-
-import './assets/style/index.less'
 import 'vant/lib/index.css';
 import { vant } from '@/config/vant.config.js'
 import { install } from '@/plugins/custom-install.js'
