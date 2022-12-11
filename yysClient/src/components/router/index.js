@@ -80,6 +80,11 @@ export const charts = [
 
 export const otherRouter = [
     {
+    path: '/HelloWorld',
+    name: 'HelloWorld',
+    component:()=>import('@/components/HelloWorld.vue')
+    },
+    {
         path: '/DeptSelect',
         name: 'DeptSelect',
         meta: {

@@ -32,3 +32,42 @@ const school = {
   const { classes: { stu: { name } }} = school
 
   console.log(name)
+
+
+  function simpleClone(initalObj) { 
+   var obj = {}; 
+   for ( var i in initalObj) { 
+       obj[i] = initalObj[i]; 
+   } 
+   return obj; 
+} 
+var obj = { 
+   a: "hello", 
+   b:{ a: "world", b: 21 }, 
+   c:["Bob", "Tom", "Jenny"], 
+   d:function() { 
+       alert("hello world"); 
+   } 
+} 
+var cloneObj = simpleClone(obj); 
+cloneObj.a = 'dfd'
+console.log(obj.a); 
+console.log(cloneObj.b); 
+console.log(cloneObj.c); 
+console.log(cloneObj.d); 
+  
+
+
+//对象的解构
+const school1 = {
+   classes: {
+      stu: {
+         name1: 'Bob',
+         age: 24,
+      }
+   }
+}
+
+const { classes:{stu:{name1}} } = school1
+
+console.log(name1)

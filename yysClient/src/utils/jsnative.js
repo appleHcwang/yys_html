@@ -8,15 +8,16 @@
  */
 
 export default function () {
-    window['jsMethon','shareResult'] = (res) => {
-        jsMethon(res)
-    }
-     window.webkit.messageHandlers.WHCJSObject.postMessage('js调用原生方法',function shareResult(res) {
-        console.log(res)
-    });
+    // window['jsMethon','shareResult'] = (res) => {
+    //     jsMethon(res)
+    // }
+
+    // 
+
+     window.webkit.messageHandlers.DownloadClick.postMessage({url:'https://oss-beijing-m8.openstorage.cn/yys-oss-dev/yys/privacy/policy/d41d8cd98f00b204e9800998ecf8427e.docx'});
 }
 
-function jsMethon(res) {
-    console.log(res)
+// function jsMethon(res) {
+//     console.log(res)
 
-}
+// }

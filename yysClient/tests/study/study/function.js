@@ -156,3 +156,35 @@ for(let i = 0; i < str.length; i++) {
 
   console.log(str[i])
 }
+
+
+var Parent = function(x,y) {
+
+  return x + y
+
+}
+var p1 = new Parent()
+
+p1.name = 'sdd'
+
+
+console.log(p1.name) 
+
+function car(make,mode,year) {
+this.make = make
+this.mode = mode
+this.year = year
+}
+
+const car1 = new car('dd','dd','pp')
+
+console.log(car1)
+
+console.log(typeof p1)
+
+let arr = []
+
+console.log(Array.isArray(arr))
+
+//toFixed 四舍五入 
+console.log((0.1 + 0.2).toFixed(1))

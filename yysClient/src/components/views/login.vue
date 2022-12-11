@@ -1,6 +1,12 @@
 <template>
   <div class="login">
     <div class="login-top">
+
+<a @click="toContant"  class="contactPutian" target="_blank" >
+           dvfvfdv
+        </a> 
+  
+
       <img class="login-icon" src="@/assets/appicon.png" alt="" />
       <p class="app-tle">讯飞云医声</p>
       <div class="top-bt">
@@ -45,8 +51,16 @@ export default {
     };
   },
   methods: {
+    toContant(){
+      window.location.href = 'https://oss-beijing-m8.openstorage.cn/yys-oss-dev/yys/privacy/policy/d41d8cd98f00b204e9800998ecf8427e.docx'
+
+        },
+ 
     
     onSubmit(values) {
+
+
+      
       console.log("submit", values);
       let postData = {
         params: {

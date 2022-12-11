@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title id="title">您好</title>
 
     <script>
         let m = 'fdfdfd'
@@ -26,7 +26,7 @@
   </head>
   <body>
       <div id="container">
-        防化服
+  
         <!-- <div class="smiley-green">
           <div class="left-eye"></div>
           <div class="right-eye"></div>
@@ -52,10 +52,14 @@
 </html>
 
 <script>
+  console.log('MMNNKK')
+  let aaa = document.getElementById("title")
+  aaa.innerHTML = 'dfdfdfd'
+
+
 
 function handler(event) {
 
-  console.log('MMNNKK')
 
   function str(el) {
     if (!el) return "null"
