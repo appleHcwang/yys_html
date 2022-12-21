@@ -1,12 +1,9 @@
 <template>
   <div id="app">
-
-    <div> {{ $func.sum(5,5) }}</div>
-  
     <transition >
      <router-view class="view app-view"></router-view>
     </transition>
-  </div>ß
+  </div>
   <!-- <Login msg="Welcome to Your Vue.js App"/> -->
 </template>
 
@@ -155,11 +152,6 @@ body{
   padding: 0;
   margin: 0;
   color: #333;
- 
-}
-
-html{
- 
  
 }
 

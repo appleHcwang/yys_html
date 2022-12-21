@@ -154,6 +154,17 @@ export default {
             token = uapToken;
           }
           this.$store.commit('setcurrentHos', currentHos);
+
+
+          let item = {}
+          item.deptCode =  responseData.userInfo.orgCode
+      item.deptName = responseData.userInfo.orgName;
+          this.$store.commit("hospital/setcurrentDept", item);
+ 
+      localStorage.setItem("currentDept", JSON.stringify(item));
+
+
+
           this.$store
             .dispatch("user/LoginByQrCode", {
               userInfo,
