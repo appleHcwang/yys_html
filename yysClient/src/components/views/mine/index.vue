@@ -76,6 +76,7 @@ export default {
         .then(() => {
           // on confirm
           localStorage.removeItem('userInfo')
+          localStorage.removeItem('userId')
           this.$router.push({
             name:'login'
           })
