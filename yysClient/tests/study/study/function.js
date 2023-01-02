@@ -188,3 +188,16 @@ console.log(Array.isArray(arr))
 
 //toFixed 四舍五入 
 console.log((0.1 + 0.2).toFixed(1))
+
+
+var pp = {
+ 
+ print:function(x,y,callback){
+   callback(x+y)
+  console.log(x,y)
+ }
+}
+
+pp.print(1,9,function(res) {
+   console.log(res)
+})
