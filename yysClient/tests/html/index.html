@@ -2,7 +2,7 @@
  * @Author: appleHcwang 2372233634@qq.com
  * @Date: 2022-06-21 16:51:56
  * @LastEditors: appleHcwang 2372233634@qq.com
- * @LastEditTime: 2022-09-30 17:19:48
+ * @LastEditTime: 2022-12-27 17:51:59
  * @FilePath: /yysClient/public/index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -21,42 +21,64 @@
        function test() {
            console.log('dffdfdd')
        }
-       test()
+     
     </script>
   </head>
   <body>
-      <div id="container">
+
+    <div id="container">
+      <p>dfdf</p>
+      fdfdfdf
+      <!-- <div id="child">
+         </div> -->
+      <!-- <div>dfs </div> -->
+      <!-- <div class="smiley-green">
+            <div class="left-eye"></div>
+            <div class="right-eye"></div>
+            <div class="smile"></div>
+          </div>
+      
+          <div class="smiley-yellow">
+            <div class="left-eye"></div>
+            <div class="right-eye"></div>
+            <div class="smile"></div>
+          </div>
+      
+          <div class="smiley-red">
+            <div class="left-eye"></div>
+            <div class="right-eye"></div>
+            <div class="smile"></div>
+          </div> -->
+    </div>
   
-        <!-- <div class="smiley-green">
-          <div class="left-eye"></div>
-          <div class="right-eye"></div>
-          <div class="smile"></div>
-        </div>
-    
-        <div class="smiley-yellow">
-          <div class="left-eye"></div>
-          <div class="right-eye"></div>
-          <div class="smile"></div>
-        </div>
-    
-        <div class="smiley-red">
-          <div class="left-eye"></div>
-          <div class="right-eye"></div>
-          <div class="smile"></div>
-        </div> -->
+    <!-- 嵌套选择器的写法 -->
+    <div>
+      <h> 这是一个div h标签</h>
+      <p>这个段落是蓝色文本，居中对齐。</p>
+      <div class="marked">
+        <p>这个段落不是蓝色文本。</p>
+
       </div>
-      <textarea id="log">Events will show up here!
-    </textarea>
-      <script src="script.js"></script>
+      <p>所有 class="marked"元素内的 p 元素指定一个样式，但有不同的文本颜色。</p>
+  
+      <p class="marked">带下划线的 p 段落。</p>
+    </div>
+    <h> 这是一个H标签</h>
+    <script src="script.js"></script>
   </body>
-</html>
+  
+  </html>
 
 <script>
+
   console.log('MMNNKK')
   let aaa = document.getElementById("title")
   aaa.innerHTML = 'dfdfdfd'
 
 
+
+
+test()
 
 function handler(event) {
 
@@ -95,14 +117,23 @@ html {
 
 #container {
   border: 1px solid yellow;
-  padding: 20px;
-  width: 100px;
-  /* margin: 0 auto; */
+  /* padding: 20px; */
 
-  /* margin-bottom: 5px; */
-
-  box-sizing: border-box;
+  width: 200px;
+  height: 100px;
+ 
   background-color: red;
+
+  
+}
+
+#child {
+  background-color:green;
+  /* width: 50%;
+  height: 50%; */
+
+
+
 }
 
 /* #log {
@@ -270,6 +301,51 @@ html {
   top: 60%;
   left: 0%;
 } */
+
+/*
+分组选择器 可以组合  每个选择器用逗号分隔--------------------------------
+*/
+div,p {
+  color: yellow;
+}
+
+/* 嵌套选择器 */
+.marked p
+{
+    
+    color: red;
+}
+p.marked{
+    text-decoration:underline;
+    color: red;
+}
+
+
+/* 后代选择器(以空格     分隔) */
+div h {
+  color: blue;
+}
+
+
+ /* 子元素选择器(以大于 > 号分隔） 只能作为一级的子元素 */
+div>h {
+  color: green
+}
+
+
+
+
+/* 相邻兄弟选择器（以加号 + 分隔） */
+div+p {
+  color:black
+}
+
+
+/* 普通兄弟选择器（以波浪号 ～ 分隔）  */
+div~h {
+  color: green;
+}
+
 
 
 </style>

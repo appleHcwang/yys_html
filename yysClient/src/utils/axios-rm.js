@@ -1,7 +1,24 @@
+/*
+ * @Author: appleHcwang 2372233634@qq.com
+ * @Date: 2022-07-18 12:24:44
+ * @LastEditors: appleHcwang 2372233634@qq.com
+ * @LastEditTime: 2022-12-24 17:20:54
+ * @FilePath: /yysClient/src/utils/axios-rm.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import axios from 'axios';
 import { getToken } from '../utils/auth.js'
-
+let baseURL = '';
+axios.defaults.withCredentials = true;
 export default async function ({ url, data = {}, method = 'post', headers = {} }) {
+    if(process.env.VUE_APP_ENV === 'development') {
+       baseURL = '/YYS-SSOServer'
+    }  else {
+
+       baseURL = process.env.VUE_APP_BASE_URL
+    }
+    url = baseURL + url 
+    alert(url)
     const commonRequestInter = function (config) {
         config.data = {
             appVersion: '1200',
@@ -23,12 +40,14 @@ export default async function ({ url, data = {}, method = 'post', headers = {} }
         };
         return config
     }
+    
     let config = commonRequestInter({ url, data, method, headers })
     return new Promise((resolve, reject) => {
         let axiosConfig = {
             ...config,
             timeout: 30 * 1000
         }
+    
         axios(axiosConfig).then(response => {
             const res = response.data
             if (res.ec === '00068' && getToken()) {

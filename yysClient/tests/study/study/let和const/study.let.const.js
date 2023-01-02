@@ -2,7 +2,7 @@
  * @Author: appleHcwang 2372233634@qq.com
  * @Date: 2022-04-13 11:26:24
  * @LastEditors: appleHcwang 2372233634@qq.com
- * @LastEditTime: 2022-09-23 11:19:06
+ * @LastEditTime: 2022-12-09 17:14:19
  * @FilePath: /yysClient/tests/study/study/let和const/study.let.const.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -82,17 +82,40 @@
 // console.log(c)
   
 
-let obj1 = {name: 'Kobe',
-address:{
-x:100,
-y:100
-}
-}
+// let obj1 = {name: 'Kobe',
+// address:{
+// x:100,
+// y:100
+// }
+// }
 
-let obj2= {... obj1}
+// let obj2= {... obj1}
 
-obj1.address.x = 200;
+// obj1.address.x = 200;
 
-console.log(obj2)
+// console.log(obj2)
 
 
+/*
+
+*/
+// typeof 其实就是判断参数是什么类型的实例，就一个参数，用例：typeof A
+// 返回值：
+//"number"、"string"、"boolean"、"object"、"function" 和 "undefined"
+
+// 二、instanceof
+// instanceof 是用来判断 A 是否为 B 的实例，表达式为：A instanceof B，如果 A 是 B 的实例，则返回 true,否则返回 false。
+
+var name = 'World!';
+
+(function () {
+    console.log(name);
+    if (typeof name === 'undefined') {
+        var name = 'Jartto';
+        console.log('Hi~ ' + name);
+    } else {
+        console.log('Hello ' + name);
+    }
+})();
+
+console.log(name);

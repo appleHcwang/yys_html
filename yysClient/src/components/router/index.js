@@ -26,8 +26,8 @@ import QuoteOcrList  from '../views/OCR/QuoteOcrList.vue'
 import ScrollXd from '../views/common/scroll-xd.vue'
 
 //登陆
-export const loginRouter = {
-    path: '/',
+export const loginRouter = [{
+    path: '/login',
     name: 'login',
     meta: {
         title: '登录',
@@ -35,7 +35,12 @@ export const loginRouter = {
     },
     hidden: true,
     component: Login
+},
+{
+    path:'/',
+    redirect:'/login'
 }
+]
 
 
 export const commonIframe = {
@@ -215,7 +220,7 @@ export const testRouter = [
 
 const routes = [
     mainRouter,
-    loginRouter,
+    ...loginRouter,
     commonIframe,
     ...patientRouter,
     ...otherRouter,

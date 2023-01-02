@@ -31,6 +31,16 @@ watch: {
   components: {
     Login,
   },
+ created() {
+  
+ },
+
+  methods: {
+    getTest() {
+      let abc = 'abcmm'
+      return `${abc}`
+    }
+  }
 };
 </script>
 
@@ -142,11 +152,6 @@ body{
   padding: 0;
   margin: 0;
   color: #333;
- 
-}
-
-html{
- 
  
 }
 
